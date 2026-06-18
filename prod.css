@@ -255,3 +255,9 @@
 @media (prefers-reduced-motion: reduce){
   [data-pr], .prod-chapter__media .ph, .prod-hero__media .ph, .prod-scrollcue svg{ animation:none !important; transition:none !important; opacity:1 !important; transform:none !important; }
 }
+
+/* hero: subtle conditional status link (replaces the alarming 2nd button) */
+.prod-hero__statuslink{ display:inline-flex; align-items:center; gap:.4rem; align-self:center;
+  color: var(--teal-mint); font-weight:600; font-size: var(--text-body-sm);
+  transition: gap .2s var(--ease), opacity .2s; }
+.prod-hero__statuslink:hover{ gap:.7rem; opacity:.85; text-decoration:underline; text-underline-offset:3px; }
