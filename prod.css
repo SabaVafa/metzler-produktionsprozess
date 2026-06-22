@@ -335,3 +335,9 @@
 .prod-finale.prod-bg-soft .prod-finale__card{ background: var(--white); border-color: var(--graphite-200); }
 .prod-finale.prod-bg-soft .prod-finale__card h3{ color: var(--schwarz); }
 .prod-finale.prod-bg-soft .prod-finale__card p{ color: var(--graphite-700); }
+
+/* hero: restore text left/right padding on the copy column (full-bleed bg, inset text) */
+.prod .about-hero__copy-col{ padding-inline: clamp(1.5rem, 5vw, 7.25rem); }
+.prod .about-hero__photo-col{ margin-inline: 0; }
+/* kill any stray horizontal-overflow strip on the right edge (clip is sticky-safe) */
+html{ overflow-x: clip; }
