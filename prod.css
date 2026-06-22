@@ -362,3 +362,14 @@ html{ overflow-x: clip; }
 .prod-craft{ --msty-bg: var(--paper-white); }
 /* hero: clip to itself as a right-edge-strip guard */
 .prod .about-hero{ overflow: hidden; }
+
+/* ════ Hero v2 — full-bleed black bg, content inset symmetrically via the grid padding ════ */
+.prod .about-hero__primary{ padding-inline: clamp(1.5rem, 5vw, 7.25rem); max-width: none; margin-inline: 0; }
+.prod .about-hero__copy-col{ padding-inline: 0; }
+.prod .about-hero__photo-col{ padding-right: 0; }
+
+/* journey chrome: solid, exactly the gray of its section */
+.prod-craft .msty__chrome{ background: var(--paper-white); }
+
+/* finale: single CTA card now that support lives in the FAQ */
+.prod-finale__paths{ grid-template-columns: 1fr; max-width: 30rem; }
