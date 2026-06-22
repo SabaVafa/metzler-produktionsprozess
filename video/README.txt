@@ -1,1 +1,1 @@
-Lege hier das Produktionsvideo ab und benenne es 'Metzler-Werkstatt.mp4' (oder passe den Pfad in index.html an).
+Produktionsvideo: Praezision-braucht-Zeit.mp4 (eingebunden). Zum Austauschen Datei ersetzen oder den <source>-Pfad in index.html anpassen.

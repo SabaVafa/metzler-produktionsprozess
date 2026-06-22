@@ -1,9 +1,10 @@
 /* ══════════════════════════════════════════════════════════════
    METZLER · PRODUKTIONSPROZESS  (prod.css)
    Built strictly on the Metzler Design System (styles-v2.css tokens).
-   Rules followed: rem only (never raw px in values), color tokens only
-   (no hardcoded hex — derived shades via color-mix() from tokens),
-   radius/shadow/spacing/type tokens. Scoped under .prod.
+   Rules: rem-only values (px only in @media), token colors only — no
+   hardcoded hex. Derived shades use color-mix() INLINE from tokens
+   (color-mix held in a custom property does not resolve in all engines,
+   so we never indirect it). Scoped under .prod.
    ════════════════════════════════════════════════════════════ */
 
 .prod{
@@ -13,16 +14,6 @@
   /* editorial fluid display scale (Design System §4: Display 2/3) */
   --display-2: clamp(3rem, 7vw, 6rem);
   --display-3: clamp(2rem, 5vw, 4.5rem);
-  /* dark scene, derived from teal-dark / teal-900 / schwarz tokens */
-  --scene-1: var(--teal-dark);
-  --scene-2: color-mix(in srgb, var(--teal-dark) 55%, var(--schwarz));
-  --scene-3: color-mix(in srgb, var(--teal-900) 80%, var(--schwarz));
-  --scene-glow: color-mix(in srgb, var(--teal) 50%, var(--teal-dark));
-  /* text-on-dark tiers, derived from --white */
-  --on-dark: color-mix(in srgb, var(--white) 82%, transparent);
-  --on-dark-soft: color-mix(in srgb, var(--white) 66%, transparent);
-  --on-dark-mute: color-mix(in srgb, var(--white) 55%, transparent);
-  --mint-hover: color-mix(in srgb, var(--teal-mint) 78%, var(--white));
 }
 @media (max-width: 900px){ .prod{ --prod-top: 4.375rem; } }
 
@@ -32,7 +23,7 @@
 .prod-dark{ background: var(--teal-dark); color: var(--white); }
 .prod-soft{ background: var(--paper-white); }
 
-/* scoped editorial type (Design-System display scale + token-bounded clamps) */
+/* scoped editorial type */
 .prod-display{ font-size: var(--display-3); line-height: 1.04; letter-spacing: -.03em; font-weight: 700; }
 .prod-h2{ font-size: clamp(var(--text-h1), 3.4vw, var(--text-display)); line-height: 1.08; letter-spacing: -.025em; font-weight: 700; margin: 0; }
 .prod em, .prod .accent{ font-style: normal; color: var(--teal-mint); }
@@ -62,8 +53,8 @@
 
 /* ── HERO ─────────────────────────────────────────────── */
 .prod-hero{ position:relative; overflow:hidden; color: var(--white); background:
-    radial-gradient(140% 120% at 78% 8%, var(--scene-glow) 0%, transparent 55%),
-    linear-gradient(160deg, var(--scene-1) 0%, var(--scene-2) 55%, var(--scene-3) 100%); }
+    radial-gradient(140% 120% at 78% 8%, color-mix(in srgb, var(--teal) 50%, var(--teal-dark)) 0%, transparent 55%),
+    linear-gradient(160deg, var(--teal-dark) 0%, color-mix(in srgb, var(--teal-dark) 55%, var(--schwarz)) 55%, color-mix(in srgb, var(--teal-900) 80%, var(--schwarz)) 100%); }
 .prod-hero__inner{ position:relative; z-index:2; display:grid; gap: clamp(2rem,5vw,4.5rem);
   grid-template-columns: 1fr; align-items:center;
   padding-block: clamp(3rem, 8vw, 6.5rem); padding-top: clamp(5rem, 9vw, 7.5rem); }
@@ -72,16 +63,16 @@
 .prod-hero .eyebrow{ color: var(--teal-mint); letter-spacing:.22em; }
 .prod-hero h1{ margin: var(--sp-2) 0 0; font-size: var(--display-2); line-height:.95; letter-spacing:-.035em; font-weight:700; }
 .prod-hero__sub{ margin-top: clamp(1.1rem,2vw,1.6rem); max-width: 46ch;
-  font-size: clamp(1.0625rem,1.3vw,1.25rem); line-height:1.6; color: var(--on-dark); }
+  font-size: clamp(1.0625rem,1.3vw,1.25rem); line-height:1.6; color: color-mix(in srgb, var(--white) 82%, transparent); }
 .prod-hero__actions{ display:flex; flex-wrap:wrap; gap: var(--sp-3); margin-top: clamp(1.6rem,2.5vw,2.2rem); }
 .prod-hero__actions .btn{ height: 3.125rem; }
 .btn-mint{ background: var(--teal-mint); color: var(--teal-dark); border:none; font-weight:600; }
-.btn-mint:hover{ background: var(--mint-hover); }
+.btn-mint:hover{ background: color-mix(in srgb, var(--teal-mint) 78%, var(--white)); }
 .btn-glass{ background: color-mix(in srgb, var(--white) 8%, transparent); color: var(--white);
   border:.09375rem solid color-mix(in srgb, var(--white) 50%, transparent); backdrop-filter: blur(.25rem); }
 .btn-glass:hover{ background: color-mix(in srgb, var(--white) 16%, transparent); }
 .prod-hero__trust{ display:flex; flex-wrap:wrap; gap: .6rem 1.75rem; margin-top: clamp(1.6rem,2.5vw,2.25rem);
-  font-size: var(--text-body-sm); color: var(--on-dark-soft); }
+  font-size: var(--text-body-sm); color: color-mix(in srgb, var(--white) 66%, transparent); }
 .prod-hero__trust span{ display:inline-flex; align-items:center; gap: var(--sp-2); }
 .prod-hero__trust svg{ width:1rem; height:1rem; color: var(--teal-mint); flex:0 0 auto; }
 .prod-hero__media{ position:relative; border-radius: var(--r-xl); overflow:hidden; aspect-ratio: 4/5; box-shadow: var(--shadow-xl); }
@@ -95,7 +86,7 @@
   box-shadow:0 0 0 .25rem color-mix(in srgb, var(--teal-mint) 25%, transparent); }
 @keyframes kb{ from{ transform: scale(1.02); } to{ transform: scale(1.12); } }
 .prod-scrollcue{ position:absolute; left:50%; bottom:1.125rem; transform:translateX(-50%); z-index:3;
-  display:flex; flex-direction:column; align-items:center; gap:.4rem; color: var(--on-dark-mute);
+  display:flex; flex-direction:column; align-items:center; gap:.4rem; color: color-mix(in srgb, var(--white) 55%, transparent);
   font-size: var(--text-caption); letter-spacing:.18em; text-transform:uppercase; }
 .prod-scrollcue svg{ width:1.125rem; height:1.125rem; animation: bob 1.8s var(--ease) infinite; }
 @keyframes bob{ 0%,100%{ transform: translateY(0);} 50%{ transform: translateY(.3125rem);} }
@@ -114,7 +105,7 @@
 .prod-film__head{ display:flex; align-items:flex-end; justify-content:space-between; gap: var(--sp-8); flex-wrap:wrap; margin-bottom: var(--sp-10); }
 .prod-film__head .eyebrow{ color: var(--teal-mint); }
 .prod-film__head h2{ color: var(--white); }
-.prod-film__head p{ max-width: 42ch; color: var(--on-dark-soft); font-size: var(--text-body); margin:0; }
+.prod-film__head p{ max-width: 42ch; color: color-mix(in srgb, var(--white) 66%, transparent); font-size: var(--text-body); margin:0; }
 .prod-film__frame{ position:relative; border-radius: var(--r-xl); overflow:hidden; aspect-ratio:16/9;
   background: var(--teal-900); box-shadow: var(--shadow-xl); cursor:pointer; }
 .prod-film__frame video{ width:100%; height:100%; object-fit:cover; display:block; }
@@ -186,7 +177,7 @@
 .prod-tech__head .eyebrow{ color: var(--teal-mint); }
 .prod-tech__head h2{ color: var(--white); }
 .prod-tech__head p{ margin: var(--sp-4) 0 0; color: color-mix(in srgb, var(--white) 70%, transparent); font-size: var(--text-h4); line-height:1.6; max-width:56ch; }
-.prod-tech__note{ margin-top: var(--sp-5); font-size: var(--text-body-sm); line-height:1.55; color: var(--on-dark-mute); max-width:70ch; }
+.prod-tech__note{ margin-top: var(--sp-5); font-size: var(--text-body-sm); line-height:1.55; color: color-mix(in srgb, var(--white) 55%, transparent); max-width:70ch; }
 .prod-specs{ display:grid; grid-template-columns: repeat(2,1fr); gap:.0625rem;
   background: color-mix(in srgb, var(--white) 10%, transparent); border:.0625rem solid color-mix(in srgb, var(--white) 10%, transparent);
   border-radius: var(--r-xl); overflow:hidden; }
@@ -203,7 +194,7 @@
 .prod-qc__body{ padding: clamp(2rem,3.5vw,3rem); }
 .prod-qc__body .eyebrow{ color: var(--teal-mint); }
 .prod-qc__body h3{ font-size: clamp(var(--text-h2),2.6vw,var(--text-display)); font-weight:700; letter-spacing:-.02em; line-height:1.1; margin:.4rem 0 .9rem; color: var(--white); }
-.prod-qc__body>p{ color: var(--on-dark); font-size: var(--text-body); line-height:1.6; margin:0 0 var(--sp-6); max-width:44ch; }
+.prod-qc__body>p{ color: color-mix(in srgb, var(--white) 82%, transparent); font-size: var(--text-body); line-height:1.6; margin:0 0 var(--sp-6); max-width:44ch; }
 .prod-qc__list{ display:grid; grid-template-columns:1fr; gap: var(--sp-3); }
 @media (min-width:560px){ .prod-qc__list{ grid-template-columns:1fr 1fr; } }
 .prod-qc__item{ display:flex; gap:.6rem; align-items:flex-start; font-size: var(--text-body-sm); color: color-mix(in srgb, var(--white) 90%, transparent); line-height:1.4; }
@@ -252,18 +243,18 @@
 
 /* ── FINALE ───────────────────────────────────────────── */
 .prod-finale{ position:relative; overflow:hidden; color: var(--white); background:
-    radial-gradient(120% 130% at 82% 12%, var(--scene-glow) 0%, transparent 55%),
-    linear-gradient(160deg, var(--scene-1) 0%, var(--scene-2) 60%, var(--scene-3) 100%); }
+    radial-gradient(120% 130% at 82% 12%, color-mix(in srgb, var(--teal) 50%, var(--teal-dark)) 0%, transparent 55%),
+    linear-gradient(160deg, var(--teal-dark) 0%, color-mix(in srgb, var(--teal-dark) 55%, var(--schwarz)) 60%, color-mix(in srgb, var(--teal-900) 80%, var(--schwarz)) 100%); }
 .prod-finale__inner{ position:relative; z-index:2; display:grid; grid-template-columns:1fr; gap: clamp(2rem,4vw,3.5rem); align-items:center; }
 @media (min-width: 900px){ .prod-finale__inner{ grid-template-columns: 1fr 1fr; gap: clamp(3rem,5vw,5rem); } }
 .prod-finale .eyebrow{ color: var(--teal-mint); }
 .prod-finale h2{ color: var(--white); margin:.2rem 0 var(--sp-4); }
-.prod-finale__text p{ color: var(--on-dark); font-size: var(--text-h4); line-height:1.6; margin:0; max-width:42ch; }
+.prod-finale__text p{ color: color-mix(in srgb, var(--white) 82%, transparent); font-size: var(--text-h4); line-height:1.6; margin:0; max-width:42ch; }
 .prod-finale__paths{ display:grid; grid-template-columns:1fr; gap: var(--sp-4); }
 @media (min-width: 560px){ .prod-finale__paths{ grid-template-columns:1fr 1fr; } }
 .prod-finale__card{ background: color-mix(in srgb, var(--white) 5%, transparent); border:.0625rem solid color-mix(in srgb, var(--white) 15%, transparent); border-radius: var(--r-xl); padding: clamp(1.5rem,2.5vw,1.9rem); display:flex; flex-direction:column; gap:.5rem; }
 .prod-finale__card h3{ font-size: var(--text-h3); font-weight:700; margin:0; }
-.prod-finale__card p{ font-size: var(--text-body-sm); line-height:1.5; color: var(--on-dark-soft); margin:0 0 var(--sp-3); flex:1; }
+.prod-finale__card p{ font-size: var(--text-body-sm); line-height:1.5; color: color-mix(in srgb, var(--white) 66%, transparent); margin:0 0 var(--sp-3); flex:1; }
 .prod-finale__card .btn{ width:100%; }
 
 /* hero: subtle conditional status link */

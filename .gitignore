@@ -7,3 +7,6 @@ Thumbs.db
 
 # Local servers / logs
 *.log
+
+# large media (kept locally, not in git)
+video/*.mp4
