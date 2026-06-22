@@ -1,12 +1,12 @@
 # Metzler – Produktionsprozess („So entsteht Ihr Produkt")
 
-Standalone-Landingpage: **Designed in Germany** — der Weg eines Produkts von der Entwicklung
+Standalone-Landingpage: **Designed in Germany** – der Weg eines Produkts von der Entwicklung
 in Reutlingen bis vor die Haustür. Dient zwei Zielgruppen zugleich: neugierigen Besuchern
 (Markenwert) und wartenden Kund:innen (Beruhigung über den Bestellstatus).
 
 ## Schnellstart
 
-Rein statisch — kein Build nötig. Wegen relativer Asset-Pfade über einen lokalen Server öffnen:
+Rein statisch – kein Build nötig. Wegen relativer Asset-Pfade über einen lokalen Server öffnen:
 
 ```bash
 python -m http.server 8080
@@ -16,7 +16,7 @@ python -m http.server 8080
 ## Bestellstatus-Deeplink (für die „Lieferung verzögert"-E-Mail)
 
 Die Fertigungs-Status-Leiste kann den aktuellen Schritt markieren. Hängen Sie `?stage=N`
-(1–6) an die URL — der Schritt erhält das Label **„Sie sind hier"**, vorherige gelten als erledigt:
+(1–6) an die URL – der Schritt erhält das Label **„Sie sind hier"**, vorherige gelten als erledigt:
 
 ```
 index.html?stage=4   → Schritt 4 (Endmontage & Prüfung) ist „Sie sind hier"
