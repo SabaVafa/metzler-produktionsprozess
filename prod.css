@@ -420,3 +420,10 @@ html{ overflow-x: clip; }
 .prod-film__chapter.is-active b{ color: var(--teal-mint); }
 .prod-film__frame.playing .prod-film__controls, .prod-film__frame.playing .prod-film__nav{ opacity: 1; }
 @media (max-width: 600px){ .prod-film__chapter span{ display: none; } .prod-film__chapters{ gap: .75rem; } }
+
+/* film navbar: center the chapters + accessibility */
+.prod-film__chapters{ justify-content: center; flex-wrap: wrap; }
+.prod-film__chapter{ flex: 0 0 auto; color: color-mix(in srgb, var(--white) 72%, transparent); }
+.prod-film__chapter b{ color: color-mix(in srgb, var(--white) 58%, transparent); }
+.prod-film__chapter:hover{ color: var(--white); }
+.prod-film__play:focus-visible, .prod-film__ctrl:focus-visible, .prod-film__chapter:focus-visible{ outline: 2px solid var(--teal-mint); outline-offset: 3px; }

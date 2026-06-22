@@ -7,7 +7,7 @@
 <meta name="description" content="Reutlingen, seit 2013. Edelstahl-Türklingeln, Sprechanlagen, Briefkästen und Hausnummern für den modernen Eingangsbereich – in Deutschland entwickelt und geprüft." />
 <link rel="stylesheet" href="styles-v2.css" />
 <link rel="stylesheet" href="style.css" />
-<link rel="stylesheet" href="prod.css?v=27" />
+<link rel="stylesheet" href="prod.css?v=28" />
 </head>
 <body>
 
@@ -241,14 +241,14 @@
           <button class="prod-film__ctrl" id="prodFilmMute" type="button" aria-label="Ton einschalten"></button>
         </div>
         <div class="prod-film__nav">
-          <div class="prod-film__progress"><i id="prodFilmBar"></i></div>
-          <div class="prod-film__chapters">
-            <button class="prod-film__chapter is-active" data-i="0" type="button"><b>01</b><span>Entwicklung</span></button>
-            <button class="prod-film__chapter" data-i="1" type="button"><b>02</b><span>Gravur</span></button>
-            <button class="prod-film__chapter" data-i="2" type="button"><b>03</b><span>Veredelung</span></button>
-            <button class="prod-film__chapter" data-i="3" type="button"><b>04</b><span>Endmontage</span></button>
-            <button class="prod-film__chapter" data-i="4" type="button"><b>05</b><span>Kontrolle</span></button>
-            <button class="prod-film__chapter" data-i="5" type="button"><b>06</b><span>Versand</span></button>
+          <div class="prod-film__progress" role="progressbar" aria-label="Video-Fortschritt" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i id="prodFilmBar"></i></div>
+          <div class="prod-film__chapters" role="group" aria-label="Video-Kapitel">
+            <button class="prod-film__chapter is-active" data-i="0" type="button" aria-label="Zu Kapitel 1: Entwicklung springen"><b>01</b><span>Entwicklung</span></button>
+            <button class="prod-film__chapter" data-i="1" type="button" aria-label="Zu Kapitel 2: Gravur springen"><b>02</b><span>Gravur</span></button>
+            <button class="prod-film__chapter" data-i="2" type="button" aria-label="Zu Kapitel 3: Veredelung springen"><b>03</b><span>Veredelung</span></button>
+            <button class="prod-film__chapter" data-i="3" type="button" aria-label="Zu Kapitel 4: Endmontage springen"><b>04</b><span>Endmontage</span></button>
+            <button class="prod-film__chapter" data-i="4" type="button" aria-label="Zu Kapitel 5: Kontrolle springen"><b>05</b><span>Kontrolle</span></button>
+            <button class="prod-film__chapter" data-i="5" type="button" aria-label="Zu Kapitel 6: Versand springen"><b>06</b><span>Versand</span></button>
           </div>
         </div>
       </div>
@@ -1140,6 +1140,6 @@
   })();
 </script>
 
-<script src="prod.js?v=3"></script>
+<script src="prod.js?v=4"></script>
 </body>
 </html>

@@ -54,8 +54,9 @@
       if(!vid.duration) return;
       var prog = vid.currentTime / vid.duration;
       if(bar) bar.style.width = (prog * 100) + '%';
+      var pe = bar && bar.parentElement; if(pe) pe.setAttribute('aria-valuenow', Math.round(prog * 100));
       var idx = Math.min(chapters.length - 1, Math.floor(prog * chapters.length));
-      chapters.forEach(function(c,i){ c.classList.toggle('is-active', i === idx); });
+      chapters.forEach(function(c,i){ var on = i === idx; c.classList.toggle('is-active', on); if(on) c.setAttribute('aria-current','true'); else c.removeAttribute('aria-current'); });
     });
 
     if(playBtn) playBtn.addEventListener('click', function(e){ e.stopPropagation(); play(); });
