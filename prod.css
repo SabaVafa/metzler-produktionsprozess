@@ -309,3 +309,9 @@
   .faq__inner > *:last-child { order: 1; }
   .faq__support { position: static; }
 }
+
+/* ════ Hero: full-bleed black banner ════ */
+.prod .about-hero{ background:#000; }
+.prod .about-hero__primary{ max-width:none; padding-inline:0; margin-inline:0; }
+.prod .about-hero__copy-col, .prod .about-hero__photo-col{ background:#000; }
+.prod .about-hero h1 span{ display:block; }
