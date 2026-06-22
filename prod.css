@@ -393,3 +393,6 @@ html{ overflow-x: clip; }
 
 /* finale: drop the floating card box — CTA sits on the section like the others */
 .prod-finale.prod-bg-white .prod-finale__card{ background: transparent; border: none; min-height: 0; padding: 0; }
+
+/* finale CTA button spacing (section now uses the standard header pattern) */
+.prod-finale .prod-finale__cta{ margin-top: var(--sp-8); }
