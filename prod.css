@@ -317,3 +317,21 @@
 .prod .about-hero h1 span{ display:block; }
 /* hero: inset the image from the right edge to match the text's left padding */
 .prod .about-hero__photo-col{ padding-right: clamp(1.5rem, 5vw, 7.25rem); }
+
+/* ════ About-us alternating section backgrounds (white ↔ gray) ════ */
+.prod .prod-bg-soft{ background: var(--paper-white); }
+.prod .prod-bg-white{ background: var(--white); }
+
+/* Film section on light bg */
+.prod-film.prod-bg-white .eyebrow{ color: var(--teal); }
+.prod-film.prod-bg-white .prod-film__head h2{ color: var(--schwarz); }
+.prod-film.prod-bg-white .prod-film__head p{ color: var(--graphite-700); }
+
+/* Finale section on light bg */
+.prod-finale.prod-bg-soft{ color: var(--schwarz); }
+.prod-finale.prod-bg-soft .eyebrow{ color: var(--teal); }
+.prod-finale.prod-bg-soft .section-title{ color: var(--schwarz); }
+.prod-finale.prod-bg-soft .prod-finale__text p{ color: var(--graphite-700); }
+.prod-finale.prod-bg-soft .prod-finale__card{ background: var(--white); border-color: var(--graphite-200); }
+.prod-finale.prod-bg-soft .prod-finale__card h3{ color: var(--schwarz); }
+.prod-finale.prod-bg-soft .prod-finale__card p{ color: var(--graphite-700); }
