@@ -7,7 +7,7 @@
 <meta name="description" content="Reutlingen, seit 2013. Edelstahl-Türklingeln, Sprechanlagen, Briefkästen und Hausnummern für den modernen Eingangsbereich – in Deutschland entwickelt und geprüft." />
 <link rel="stylesheet" href="styles-v2.css" />
 <link rel="stylesheet" href="style.css" />
-<link rel="stylesheet" href="prod.css?v=5" />
+<link rel="stylesheet" href="prod.css?v=6" />
 </head>
 <body>
 
@@ -442,60 +442,44 @@
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section class="prod-sec prod-faq" id="faq">
-    <div class="container prod-faq__grid">
-      <div class="prod-faq__intro">
-        <p class="eyebrow">Ehrliche Antworten</p>
-        <h2 class="section-title">Fragen zur Lieferung</h2>
-        <p>Die häufigsten Fragen, wenn eine Bestellung auf sich warten lässt – offen und ohne Kleingedrucktes.</p>
-        <div class="prod-faq__support">
-          <h4>Noch unsicher? Sprechen Sie mit einem Menschen</h4>
-          <p>Unser Team in Reutlingen ist Mo–Fr von 09:00–16:00 Uhr erreichbar und antwortet auf E-Mails meist innerhalb eines Werktags. Für Sprechanlagen: +49 7121 317 7333.</p>
-          <div class="prod-faq__support-row">
-            <a href="tel:+4971213177310" class="btn btn-primary">+49 7121 317 7310</a>
-            <a href="mailto:service@metzlergmbh.de" class="btn btn-secondary">E-Mail schreiben</a>
+  <!-- FAQ + CONTACT (ported from Home page) -->
+  <section class="faq section" id="faq" aria-label="Häufige Fragen">
+    <div class="container">
+      <div class="faq__inner">
+        <aside class="faq__support">
+          <h3>Beratung gewünscht?</h3>
+          <p>Unsere Experten beantworten Fragen zu Material, Montage und Konfiguration – persönlich und unverbindlich.</p>
+          <a class="btn btn-primary" href="https://edelstahl-tuerklingel.de/Kontakt" target="_blank" rel="noopener">Beratung kontaktieren</a>
+          <div class="faq__phone">
+            Sprechanlagen-Hotline
+            <strong>+49 (0) 7121 / 317 7333</strong>
+            <span class="faq__phone-hours">Mo–Fr · 09:00–16:00 Uhr</span>
           </div>
-        </div>
-      </div>
-
-      <div class="prod-faq__list" id="prodFaq">
-        <div class="prod-faq__item open">
-          <button class="prod-faq__q" type="button"><span><span class="prod-faq__tag">Lieferung</span>Meine Bestellung lässt auf sich warten. Warum?</span><span class="prod-faq__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
-          <div class="prod-faq__a"><div class="prod-faq__a-in">
-            <p>Fast immer, weil Ihr Stück gerade in einem unserer Handarbeits-Schritte ist – Gravur, Endmontage oder der 12-Punkte-Endkontrolle. Anders als bei Lagerware entsteht jedes Produkt einzeln für Sie.</p>
-            <p>Sollte ein Schritt die Qualität noch nicht erreichen (etwa wenn eine Gravur wiederholt wird), nehmen wir uns die nötige Zeit – und arbeiten so schnell wie möglich, ohne bei der Prüfung Abstriche zu machen.</p>
-          </div></div>
-        </div>
-        <div class="prod-faq__item">
-          <button class="prod-faq__q" type="button"><span><span class="prod-faq__tag">Lieferung</span>Wie erfahre ich, wo meine Bestellung steht?</span><span class="prod-faq__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
-          <div class="prod-faq__a"><div class="prod-faq__a-in">
-            <p>Sobald sich der Status Ihrer Bestellung ändert, informieren wir Sie per E-Mail. Möchten Sie es vorher genau wissen, nennen Sie uns Ihre Bestellnummer – wir sagen Ihnen, in welchem Schritt Ihr Stück gerade ist.</p>
-          </div></div>
-        </div>
-        <div class="prod-faq__item">
-          <button class="prod-faq__q" type="button"><span><span class="prod-faq__tag">Lieferung</span>Kann ich stornieren, wenn es länger dauert?</span><span class="prod-faq__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
-          <div class="prod-faq__a"><div class="prod-faq__a-in">
-            <p>Solange Ihr individuell graviertes Stück noch nicht in Produktion ist, können Sie problemlos stornieren. Auch danach finden wir eine faire Lösung – sprechen Sie uns einfach an. Ihr gesetzliches Widerrufsrecht bleibt unberührt.</p>
-          </div></div>
-        </div>
-        <div class="prod-faq__item">
-          <button class="prod-faq__q" type="button"><span>Leidet die Qualität, wenn ihr schneller produziert?</span><span class="prod-faq__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
-          <div class="prod-faq__a"><div class="prod-faq__a-in">
-            <p>Genau das wollen wir vermeiden. Die Endkontrolle und das Aushärten der Oberflächen – etwa nach einer Pulverbeschichtung – lassen sich nicht beliebig beschleunigen, ohne das Ergebnis zu riskieren. Die Sorgfalt arbeitet für die Langlebigkeit Ihres Produkts.</p>
-          </div></div>
-        </div>
-        <div class="prod-faq__item">
-          <button class="prod-faq__q" type="button"><span><span class="prod-faq__tag">Versand</span>Wie werde ich benachrichtigt, wenn versendet wird?</span><span class="prod-faq__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
-          <div class="prod-faq__a"><div class="prod-faq__a-in">
-            <p>Sie erhalten eine Versandbestätigung per E-Mail mit Sendungsnummer, sobald Ihr Paket unser Haus verlässt – damit verfolgen Sie die Zustellung direkt bei DHL bzw. DPD.</p>
-          </div></div>
-        </div>
-        <div class="prod-faq__item">
-          <button class="prod-faq__q" type="button"><span><span class="prod-faq__tag">Versand</span>Was kostet der Versand?</span><span class="prod-faq__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
-          <div class="prod-faq__a"><div class="prod-faq__a-in">
-            <p>Ab einem Bestellwert von 99 € liefern wir versandkostenfrei. Nach Endkontrolle und Verpackung geht Ihr Paket sehr schnell auf den Weg zu Ihnen.</p>
-          </div></div>
+        </aside>
+        <div>
+          <h2 class="section-title" style="margin-bottom:var(--sp-8)">Häufige Fragen</h2>
+          <div class="faq__list">
+            <details class="faq__item" open>
+              <summary class="faq__q">Welcher Edelstahl wird verwendet – V2A oder V4A?<span class="faq__q-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+              <div class="faq__a">Standardmäßig fertigen wir aus V2A (1.4301), unsere Premium-Linie aus V4A (1.4404). V4A ist salzwasserbeständig und für Küstennähe sowie aggressive Umgebungen empfohlen. Beide werden gebürstet und passivieren sich selbst – ein Nachbehandeln ist nicht nötig.</div>
+            </details>
+            <details class="faq__item">
+              <summary class="faq__q">Wie läuft eine individuelle Gravur ab?<span class="faq__q-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+              <div class="faq__a">Jede Gravur fertigen wir individuell für Sie – und sehr zügig. Vor der Fertigung erhalten Sie ein digitales Korrekturmuster zur Freigabe, damit Schrift, Ziffern und Position genau stimmen.</div>
+            </details>
+            <details class="faq__item">
+              <summary class="faq__q">Kann ich eine bestehende Klingelanlage durch die XDM10 ersetzen?<span class="faq__q-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+              <div class="faq__a">In den meisten Fällen ja – die XDM10 nutzt vorhandene 2-Draht- oder 4-Draht-Verkabelungen. Bei Unsicherheit prüfen wir die Kompatibilität kostenlos vorab. Buchen Sie einen Beratungstermin und schicken Sie uns ein Foto Ihrer aktuellen Anlage.</div>
+            </details>
+            <details class="faq__item">
+              <summary class="faq__q">Was beinhaltet die 10-Jahres-Garantie?<span class="faq__q-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+              <div class="faq__a">Material- und Verarbeitungsfehler an vielen unserer Produkte – wir reparieren oder ersetzen kostenfrei. Elektronische Komponenten (XDM10, Funkklingeln) haben 2 Jahre gesetzliche Gewährleistung, Verschleißteile sind ausgenommen. Es gelten die <a class="tlink" href="https://edelstahl-tuerklingel.de/metzler-garantieerklaerung" target="_blank" rel="noopener">Garantiebedingungen</a>.</div>
+            </details>
+            <details class="faq__item">
+              <summary class="faq__q">Wie sind Versand und Rückgabe geregelt?<span class="faq__q-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+              <div class="faq__a">Versand mit DHL und DPD GoGreen, kostenlos ab 99 € Bestellwert innerhalb DE. Rückgabe innerhalb von 30 Tagen – auch für individuell gravierte Produkte (gegen 15 % Bearbeitungspauschale). Kauf auf Rechnung über Klarna verfügbar.</div>
+            </details>
+          </div>
         </div>
       </div>
     </div>
