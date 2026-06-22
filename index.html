@@ -7,7 +7,7 @@
 <meta name="description" content="Reutlingen, seit 2013. Edelstahl-Türklingeln, Sprechanlagen, Briefkästen und Hausnummern für den modernen Eingangsbereich – in Deutschland entwickelt und geprüft." />
 <link rel="stylesheet" href="styles-v2.css" />
 <link rel="stylesheet" href="style.css" />
-<link rel="stylesheet" href="prod.css?v=25" />
+<link rel="stylesheet" href="prod.css?v=27" />
 </head>
 <body>
 
@@ -235,7 +235,22 @@
         <video id="prodVideo" muted loop playsinline preload="metadata" poster="images/video-poster.png?v=2">
           <source src="video/Praezision-braucht-Zeit.mp4" type="video/mp4">
         </video>
-        <span class="prod-film__play"><span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span>
+        <button class="prod-film__play" id="prodFilmPlay" type="button" aria-label="Video abspielen"><span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></button>
+        <div class="prod-film__controls">
+          <button class="prod-film__ctrl" id="prodFilmToggle" type="button" aria-label="Pause"></button>
+          <button class="prod-film__ctrl" id="prodFilmMute" type="button" aria-label="Ton einschalten"></button>
+        </div>
+        <div class="prod-film__nav">
+          <div class="prod-film__progress"><i id="prodFilmBar"></i></div>
+          <div class="prod-film__chapters">
+            <button class="prod-film__chapter is-active" data-i="0" type="button"><b>01</b><span>Entwicklung</span></button>
+            <button class="prod-film__chapter" data-i="1" type="button"><b>02</b><span>Gravur</span></button>
+            <button class="prod-film__chapter" data-i="2" type="button"><b>03</b><span>Veredelung</span></button>
+            <button class="prod-film__chapter" data-i="3" type="button"><b>04</b><span>Endmontage</span></button>
+            <button class="prod-film__chapter" data-i="4" type="button"><b>05</b><span>Kontrolle</span></button>
+            <button class="prod-film__chapter" data-i="5" type="button"><b>06</b><span>Versand</span></button>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1125,6 +1140,6 @@
   })();
 </script>
 
-<script src="prod.js?v=2"></script>
+<script src="prod.js?v=3"></script>
 </body>
 </html>

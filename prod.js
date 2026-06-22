@@ -28,14 +28,43 @@
     });
   }
 
-  /* ── Film: click to play ── */
+  /* ── Film player: play/pause + mute controls + chapter navbar ── */
   var film = document.getElementById('prodFilm');
   var vid  = document.getElementById('prodVideo');
   if(film && vid){
-    film.addEventListener('click', function(){
-      if(vid.paused){ film.classList.add('playing'); var p = vid.play(); if(p && p.catch) p.catch(function(){}); }
-      else { vid.pause(); film.classList.remove('playing'); }
+    var playBtn = document.getElementById('prodFilmPlay');
+    var toggle  = document.getElementById('prodFilmToggle');
+    var muteBtn = document.getElementById('prodFilmMute');
+    var bar     = document.getElementById('prodFilmBar');
+    var chapters = Array.prototype.slice.call(film.querySelectorAll('.prod-film__chapter'));
+
+    var I_PLAY  = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
+    var I_PAUSE = '<svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>';
+    var I_MUTE  = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5Z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>';
+    var I_SOUND = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a9 9 0 0 1 0 14"/></svg>';
+
+    function syncToggle(){ if(toggle){ toggle.innerHTML = vid.paused ? I_PLAY : I_PAUSE; toggle.setAttribute('aria-label', vid.paused ? 'Abspielen' : 'Pause'); } }
+    function syncMute(){ if(muteBtn){ muteBtn.innerHTML = vid.muted ? I_MUTE : I_SOUND; muteBtn.setAttribute('aria-label', vid.muted ? 'Ton einschalten' : 'Ton ausschalten'); } }
+    function play(){ var p = vid.play(); if(p && p.catch) p.catch(function(){}); }
+
+    vid.addEventListener('play',  function(){ film.classList.add('playing'); syncToggle(); });
+    vid.addEventListener('pause', function(){ film.classList.remove('playing'); syncToggle(); });
+    vid.addEventListener('volumechange', syncMute);
+    vid.addEventListener('timeupdate', function(){
+      if(!vid.duration) return;
+      var prog = vid.currentTime / vid.duration;
+      if(bar) bar.style.width = (prog * 100) + '%';
+      var idx = Math.min(chapters.length - 1, Math.floor(prog * chapters.length));
+      chapters.forEach(function(c,i){ c.classList.toggle('is-active', i === idx); });
     });
+
+    if(playBtn) playBtn.addEventListener('click', function(e){ e.stopPropagation(); play(); });
+    if(toggle)  toggle.addEventListener('click', function(e){ e.stopPropagation(); if(vid.paused) play(); else vid.pause(); });
+    if(muteBtn) muteBtn.addEventListener('click', function(e){ e.stopPropagation(); vid.muted = !vid.muted; });
+    chapters.forEach(function(c,i){ c.addEventListener('click', function(e){ e.stopPropagation(); if(vid.duration){ vid.currentTime = (i / chapters.length) * vid.duration; play(); } }); });
+    film.addEventListener('click', function(){ if(vid.paused) play(); else vid.pause(); });
+
+    syncToggle(); syncMute();
   }
 
   /* ── Order-status deep-link: ?stage=N (1–6) marks the current step
