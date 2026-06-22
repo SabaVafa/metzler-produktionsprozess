@@ -315,3 +315,5 @@
 .prod .about-hero__primary{ max-width:none; padding-inline:0; margin-inline:0; }
 .prod .about-hero__copy-col, .prod .about-hero__photo-col{ background:#000; }
 .prod .about-hero h1 span{ display:block; }
+/* hero: inset the image from the right edge to match the text's left padding */
+.prod .about-hero__photo-col{ padding-right: clamp(1.5rem, 5vw, 7.25rem); }
