@@ -357,3 +357,8 @@ html{ overflow-x: clip; }
 .prod-review figcaption{ margin-top: auto; display: flex; flex-direction: column; gap: 2px; }
 .prod-review__name{ font-weight: 700; color: var(--teal); }
 .prod-review__meta{ font-size: var(--text-body-sm); color: var(--graphite-600); }
+
+/* journey sticky chrome: match the gray section it sits on */
+.prod-craft{ --msty-bg: var(--paper-white); }
+/* hero: clip to itself as a right-edge-strip guard */
+.prod .about-hero{ overflow: hidden; }
