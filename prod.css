@@ -396,3 +396,6 @@ html{ overflow-x: clip; }
 
 /* finale CTA button spacing (section now uses the standard header pattern) */
 .prod-finale .prod-finale__cta{ margin-top: var(--sp-8); }
+
+/* finale CTA: match the Home/About-us centered section buttons (substantial width, standard height) */
+.prod-finale .prod-finale__cta{ width: clamp(16.25rem, 100%, 21.75rem); }
