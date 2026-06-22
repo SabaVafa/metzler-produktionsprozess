@@ -120,8 +120,12 @@ main.about .section-title i{
 
 /* ============== SECTION 1 — HERO (Unified Scene, full-bleed) ============== */
 .about-hero{
-  padding: 0;
-  background: var(--white);
+  /* Image runs flush to the band's top/bottom edges (no vertical inset). */
+  padding-block: 0;
+  padding-inline: 0;
+  /* Full-bleed dark band; the hero content sits on the page grid (.container)
+     so the copy aligns with the nav, and the photo stays contained (sharp). */
+  background: #1A171B;
 }
 
 /* ─── Primary scene — edge-to-edge single image at natural aspect ─── */
@@ -139,11 +143,12 @@ main.about .section-title i{
   /* Dark copy panel tracks ~42% on normal screens but caps at 760px, so on
      wide monitors it hugs the (540px-capped) copy instead of leaving the
      text floating in a sea of dark space. The image takes the rest. */
-  grid-template-columns: min(calc(42% + 32px), 760px) 1fr;
+  grid-template-columns: min(calc(44% + 16px), 660px) 1fr;
+  gap: clamp(24px, 3vw, 56px);
   aspect-ratio: 3.4 / 1;
   align-items: stretch;
   background: transparent;
-  overflow: hidden;
+  overflow: visible;
 }
 
 /* Left column — anthracite / dark slate gray.
@@ -152,46 +157,70 @@ main.about .section-title i{
    right edge gives the column boundary a deliberate geometric edge
    rather than a happenstance one where image meets text. */
 .about-hero__copy-col{
-  background: #1A171B;
-  /* Single fluid clamp — scales smoothly from 24px on mobile to 116px on wide,
-     matching the container's --about-section padding rhythm. */
-  padding-inline: clamp(24px, 5vw, 116px);
-  padding-block: 0;
+  /* Transparent — the dark section shows through. No padding: the copy now
+     starts at the container's content edge, so it lines up with the nav. */
+  background: transparent;
+  padding: 0;
   position: relative;
   z-index: 2;
-  border-right: 1px solid #33363A;
   align-self: stretch;
   box-sizing: border-box;
   min-height: 0;
   min-width: 0;
 }
 
-/* Right column — edge-to-edge image, no padding. Image fills the entire
-   column, bleeds to the viewport's right edge. Split-screen feel:
-   the column's right edge IS the photo. No asymmetric mat anywhere. */
+/* Right column — the building photo as a premium, contained showcase:
+   rounded and lifted off the dark band with a crisp edge + deep shadow.
+   It fills (maximises) its grid column and downscales sharp on big screens. */
 .about-hero__photo-col{
   position: relative;
-  background: #1A171B;
   padding: 0;
   box-sizing: border-box;
   min-height: 0;
   min-width: 0;
   overflow: hidden;
+  border-radius: 0;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-inline: 0;
 }
-
-/* The building image — anchored to the right, its natural aspect
-   preserved via `object-fit: cover` inside a container sized to roughly
-   the right two-thirds of the panel. The left edge is masked with a
-   linear gradient that fades to fully transparent over the leftmost
-   third of the image, dissolving it into the sky-blue field. */
-/* Image fills the column edge-to-edge. No border, no radius, no shadow —
-   a clean split-screen wall, not a framed print. */
 .about-hero__photo{
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
   display: block;
+  transition: transform 700ms cubic-bezier(.2, .7, .2, 1);
+}
+@media (hover: hover){
+  .about-hero__photo-col:hover .about-hero__photo{ transform: scale(1.05); }
+}
+
+/* ── Signature page-entrance choreography ─────────────────────────────────
+   On load the copy rises in a refined stagger (headline line-by-line) while
+   the framed photos scatter into place one after another. */
+@keyframes heroRise{ from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+
+.about-hero__kicker{ animation: heroRise 820ms cubic-bezier(.2,.7,.2,1) 80ms both; }
+.about-hero__copy h1 span{ display: block; animation: heroRise 880ms cubic-bezier(.2,.7,.2,1) both; }
+.about-hero__copy h1 span:nth-child(1){ animation-delay: 180ms; }
+.about-hero__copy h1 span:nth-child(2){ animation-delay: 280ms; }
+.about-hero__copy .about-hero__chips{ animation: heroRise 820ms cubic-bezier(.2,.7,.2,1) 420ms both; }
+.about-hero__copy .about-hero__sub{ animation: heroRise 820ms cubic-bezier(.2,.7,.2,1) 520ms both; }
+.about-hero__copy .about-hero__ctas{ animation: heroRise 820ms cubic-bezier(.2,.7,.2,1) 620ms both; }
+
+/* The building photo fades + lifts in alongside the copy. */
+.about-hero__photo-col{ animation: heroRise 1000ms cubic-bezier(.2,.7,.2,1) both; }
+
+@media (prefers-reduced-motion: reduce){
+  .about-hero__kicker,
+  .about-hero__copy h1 span,
+  .about-hero__copy .about-hero__chips,
+  .about-hero__copy .about-hero__sub,
+  .about-hero__copy .about-hero__ctas,
+  .about-hero__photo-col{
+    animation: none;
+    opacity: 1;
+  }
 }
 
 /* Container that holds the copy block, vertically centered over the image */
@@ -222,10 +251,10 @@ main.about .section-title i{
 .about-hero__copy{
   position: absolute;
   top: 50%;
-  /* Same fluid clamp as the column padding — keeps the copy inset consistent
-     across every viewport without breakpoint jumps. */
-  left: clamp(24px, 5vw, 116px);
-  right: clamp(24px, 5vw, 116px);
+  /* Flush to the column's left edge, which is the container's content edge —
+     so the copy starts exactly where the nav logo does. */
+  left: 0;
+  right: auto;
   transform: translateY(-50%);
   color: var(--white);
   display: flex;
@@ -238,6 +267,16 @@ main.about .section-title i{
   max-width: 540px;
 }
 .about-hero__copy > *{ margin: 0; }
+/* Editorial kicker — uppercase label that gives the headline a premium
+   lead-in. */
+.about-hero__kicker{
+  margin: 0 0 var(--sp-5);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+}
 .about-hero__copy h1{
   margin: 0 0 calc(var(--sp-6) - 5px);
   text-box-trim: trim-end;
@@ -385,10 +424,13 @@ main.about .section-title i{
 
 /* ─── Responsive ─── */
 /* Tablet + mobile: the split-screen needs full desktop width to breathe.
-   Below 1024px we stack copy over photo. Crucially, the desktop layout
-   absolutely-centers the copy inside a fixed-aspect column — so here we
-   return the copy to normal flow and let the column grow with its content. */
-@media (max-width: 1023px){
+   Below 1280px we stack copy over photo — the fixed 3.4:1 band gets too short
+   for the copy below this width (cramming the headline, chips, sub and CTAs at
+   iPad-Pro-portrait 1024px, and still slightly overflowing at 1200px).
+   Crucially, the desktop layout absolutely-centers the copy inside a
+   fixed-aspect column — so here we return the copy to normal flow and let the
+   column grow with its content. */
+@media (max-width: 1279px){
   .about-hero__primary{
     display: grid;
     grid-template-columns: 1fr;
@@ -396,7 +438,8 @@ main.about .section-title i{
     aspect-ratio: auto;
   }
   .about-hero__copy-col{
-    padding-inline: clamp(var(--sp-6), 5vw, 64px);
+    /* container provides the page inset now */
+    padding-inline: 0;
     padding-block: 0;
     border-right: 0;
   }
@@ -412,16 +455,29 @@ main.about .section-title i{
     font-size: clamp(28px, 4.4vw, 40px);
     max-width: none;
   }
+  /* Full-bleed banner: break out of the container's page inset so the image
+     spans edge-to-edge across the whole stacked range (tablet + phone). */
   .about-hero__photo-col{
     aspect-ratio: 16 / 9;
+    min-height: clamp(200px, 52vw, 360px); /* never collapse if aspect-ratio is unsupported */
     padding: 0;
     order: -1;            /* photo on top, copy below, when stacked */
+    margin-inline: calc(-1 * clamp(var(--sp-6), 4vw, 56px));
+    border-inline: 0;
   }
   .about-hero__photo{ object-position: center 40%; }
 }
 
 @media (max-width: 767px){
-  .about-hero__photo-col{ aspect-ratio: 3 / 2; }
+  /* Taller crop on phones; full-bleed is inherited from the stacked range. */
+  .about-hero__photo-col{
+    aspect-ratio: 3 / 2;
+  }
+  /* Consistent vertical breathing room around the text block: drop the grid
+     row-gap (it only padded the top) so the copy's own symmetric padding-block
+     governs both the space above the kicker and below the CTAs. */
+  .about-hero__primary{ row-gap: 0; }
+  .about-hero__copy{ padding-block: 40px; }
   .about-hero__photo{ object-position: center 35%; }
   .about-hero h1{ font-size: clamp(32px, 8vw, 44px); }
   /* Drop the desktop hard line break — let the sub wrap naturally on phones */
@@ -449,7 +505,10 @@ main.about .section-title i{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 86px;
+  /* Fluid gap so all 6 stats stay on one row down to ~1024px (iPad Pro) —
+     a fixed 86px pushed the last stat onto a second line there. Keeps the
+     airy 86px on large desktops. */
+  gap: clamp(40px, 5vw, 86px);
 }
 .about-truststrip__stat{
   display: flex;
@@ -539,6 +598,10 @@ main.about .section-title i{
   display: grid;
   place-items: center;
   cursor: pointer;
+  /* Shadow so the arrow reads as a distinct floating button when it sits
+     over a badge card on small screens (where the rail padding is narrower
+     than the arrow), instead of blending into the white card behind it. */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
   transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease, opacity 0.22s ease;
 }
 .strip-arrow svg{ width: 24px; height: 24px; stroke-width: 1.5; }
@@ -550,8 +613,10 @@ main.about .section-title i{
 }
 .strip-arrow:focus-visible{ outline: none; box-shadow: 0 0 0 3px rgba(1,82,83,0.10); }
 .strip-arrow.is-hidden{ opacity: 0; pointer-events: none; }
-/* Desktop: rails fit, arrows aren't needed */
-@media (min-width: 1024px){
+/* Desktop: rails fit, arrows aren't needed. Raised to 1280 because the
+   7-badge trust-bar grid only fits from ~1280px up; below that it's a
+   swipeable rail that needs its arrows (e.g. iPad Pro at 1024). */
+@media (min-width: 1280px){
   .strip-arrow{ display: none; }
 }
 
@@ -561,10 +626,15 @@ main.about .section-title i{
    in the section's outer margin instead of over the cards. The rail's
    own padding-inline (set below, alongside its other responsive rules) puts
    the badges back inside the page margin. */
-@media (max-width: 1023px){
+@media (max-width: 1279px){
   .trustbar__viewport{
     margin-inline: calc(-1 * clamp(var(--sp-6), 4vw, 56px));
   }
+  /* The viewport breaks out to the screen edge, so pull the arrows back to
+     the page margin — otherwise they sit hard against the edge where a
+     device / edge shadow clips them. */
+  .trustbar__viewport .strip-arrow--prev{ left: clamp(var(--sp-6), 4vw, 56px); }
+  .trustbar__viewport .strip-arrow--next{ right: clamp(var(--sp-6), 4vw, 56px); }
 }
 
 /* ============== SECTION 2 — STORY ============== */
@@ -1059,8 +1129,10 @@ main.about .section-title i{
 }
 .about-founder__inner{
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: clamp(var(--sp-8), 5vw, var(--sp-16));
+  /* Image sits on the right in the wider 1.1fr column — same size as the
+     flip craft chapters (0.9fr copy / 1.1fr image). Gap matches them too. */
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: clamp(48px, 5vw, 96px);
   align-items: center;
   /* Fills the container like the other sections — the container is now
      capped to match the main site (1400px content), so no separate cap is
@@ -1069,26 +1141,87 @@ main.about .section-title i{
 /* Portrait sits on the right so the founder note opens the zig-zag:
    founder image right → chapter 1 image left → chapter 2 right … */
 .about-founder__media{ margin: 0; order: 2; }
-.about-founder__copy{ order: 1; }
-.about-founder__placeholder{
-  /* 1:1 to match the craft-chapter frames in this Qualität run. */
+/* Same vertical copy padding as .craft-copy so the image-to-text spacing
+   matches the craft chapters (gap + copy padding) on every breakpoint. */
+.about-founder__copy{ order: 1; padding-block: clamp(20px, 3vw, 48px); max-width: 480px; }
+.about-founder__frame{
+  /* Frame matches the craft-chapter frames in this Qualität run: 1:1 ratio,
+     same radius, same layered shadow and white inner hairline border. */
   aspect-ratio: 1 / 1;
   border-radius: var(--r-l);
-  background: linear-gradient(180deg, #F5F1EC 0%, #ECE4D9 100%);
-  color: rgba(0, 0, 0, 0.32);
-  display: grid;
-  place-items: center;
-  gap: var(--sp-3);
+  background: color-mix(in srgb, var(--craft-fg) 6%, #fff);
   position: relative;
   overflow: hidden;
+  box-shadow:
+    0 2px 4px rgba(0,0,0,0.06),
+    0 16px 32px rgba(0,0,0,0.08),
+    0 40px 80px rgba(0,0,0,0.10);
 }
-.about-founder__placeholder svg{ width: 96px; height: 96px; opacity: 0.65; }
-.about-founder__placeholder-label{
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+.about-founder__frame::after{
+  content: "";
+  position: absolute; inset: 0;
+  border-radius: inherit;
+  border: 1px solid rgba(255,255,255,0.18);
+  pointer-events: none;
 }
+.about-founder__frame img{
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+}
+/* Same scroll-reveal as the craft frames: clip-path wipe + image scale,
+   played when the founder note scrolls into view (.is-visible). */
+.about-founder__frame{
+  clip-path: inset(6% round 8px);
+  transition: clip-path 1100ms cubic-bezier(.2, .7, .2, 1), box-shadow 600ms ease;
+  will-change: clip-path;
+}
+.about-founder__frame img{
+  transform: scale(1.06);
+  transition: transform 1200ms cubic-bezier(.2, .7, .2, 1);
+  will-change: transform;
+}
+.about-founder.is-visible .about-founder__frame{ clip-path: inset(0 round 8px); }
+.about-founder.is-visible .about-founder__frame img{ transform: scale(1); }
+
+/* Same text entrance choreography as the craft chapters: eyebrow → headline →
+   body → signature stagger in as the note scrolls into view. */
+.about-founder__copy .eyebrow{
+  /* Match the craft-eyebrow's tighter gap to the headline (was 20px). */
+  margin-bottom: 12px;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 600ms ease, transform 600ms cubic-bezier(.2,.7,.2,1);
+}
+.about-founder__copy .section-title{
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 700ms cubic-bezier(.4,0,.2,1), transform 800ms cubic-bezier(.2,.7,.2,1);
+}
+.about-founder__body{
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 700ms ease, transform 800ms cubic-bezier(.2,.7,.2,1);
+}
+.about-founder__sign{
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 600ms ease, transform 700ms cubic-bezier(.2,.7,.2,1);
+}
+.about-founder.is-visible .about-founder__copy .eyebrow{ opacity: 1; transform: translateY(0); }
+.about-founder.is-visible .about-founder__copy .section-title{ opacity: 1; transform: translateY(0); transition-delay: 200ms; }
+.about-founder.is-visible .about-founder__body{ opacity: 0.92; transform: translateY(0); transition-delay: 420ms; }
+.about-founder.is-visible .about-founder__sign{ opacity: 1; transform: translateY(0); transition-delay: 540ms; }
+
+@media (prefers-reduced-motion: reduce){
+  .about-founder *{
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    clip-path: none !important;
+  }
+}
+
 .about-founder__copy .section-title{ margin-bottom: clamp(var(--sp-5), 2.4vw, var(--sp-6)); }
 .about-founder__body{
   display: flex;
@@ -1124,13 +1257,15 @@ main.about .section-title i{
 @media (max-width: 1023px){
   .about-founder__inner{
     grid-template-columns: 1fr;
-    gap: clamp(var(--sp-6), 4vw, var(--sp-8));
+    /* Same stacked gap as the craft chapters so the image-to-copy spacing is
+       consistent across the Qualität run. */
+    gap: clamp(28px, 6vw, 44px);
     max-width: 640px;
   }
   /* Stacked: portrait leads, like every other section. */
   .about-founder__media{ order: 1; }
-  .about-founder__copy{ order: 2; }
-  .about-founder__placeholder{ aspect-ratio: 1 / 1; }
+  .about-founder__copy{ order: 2; max-width: none; }
+  .about-founder__frame{ aspect-ratio: 1 / 1; }
 }
 
 /* ============== SECTION 4 — SORTIMENT (BENTO) ============== */
@@ -1576,7 +1711,7 @@ main.about .about-editorial__tier--bottom .section-title i{
 }
 .craft-eyebrow{
   margin: 0 0 clamp(20px, 2vw, 28px);
-  font-size: 11px;
+  font-size: var(--text-caption);
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -3117,9 +3252,8 @@ END OF LEGACY DEAD CSS */
 .trustbar__item:nth-child(1) .trustbar__face--front img{ width: 62px; height: 62px; } /* NTV — baseline */
 .trustbar__item:nth-child(2) .trustbar__face--front img{ width: 86px; height: 86px; } /* Vergleich */
 .trustbar__item:nth-child(3) .trustbar__face--front img{
-  /* Top Shop 3 Jahre — Frame.svg fills its viewBox edge-to-edge, so a
-     hair larger than the NTV baseline (62px) keeps it visually
-     consistent with the smallest neighbouring badge. */
+  /* Top Shop 3 Jahre — a hair larger than the NTV baseline (62px) keeps it
+     visually consistent with the smallest neighbouring badge. */
   width: 64px; height: 64px;
 }
 .trustbar__item:nth-child(4) .trustbar__face--front img{ width: 86px; height: 86px; } /* Red Dot */
@@ -3155,7 +3289,7 @@ END OF LEGACY DEAD CSS */
    as the home page — a single-row swipeable rail with peek + scroll-snap
    (no scrollbar). The hairline connector makes no sense in a scroller, so
    hide it. */
-@media (max-width: 1023px){
+@media (max-width: 1279px){
   .trustbar__rail{
     display: flex;
     flex-wrap: nowrap;
@@ -3179,12 +3313,22 @@ END OF LEGACY DEAD CSS */
   .trustbar__rail::-webkit-scrollbar{ display: none; } /* Chrome/Safari */
   .trustbar__rail::before{ display: none; }
   .trustbar__item{
-    flex: 0 0 30%;                    /* ~3 badges visible + a peek on tablet */
-    min-width: 150px;
+    /* Cap the slot width so badges stay close together on wider rails
+       (iPad Pro): a flat 30% basis made each slot ~278px while the badge
+       is only ~112px, leaving huge gaps. */
+    flex: 0 0 clamp(150px, 30%, 160px);
     scroll-snap-align: start;         /* start-snap so the last badge doesn't need trailing space to center */
     margin-bottom: 0;
   }
   .trustbar__sub{ white-space: normal; }
+}
+
+/* Tablet: without scroll-padding, mandatory snap aligns the first badge to the
+   scrollport edge and cancels the rail's padding-inline — pulling the badge
+   flush to the screen edge. Matching scroll-padding keeps the first badge on
+   the container content edge, consistent with the section below. */
+@media (min-width: 768px) and (max-width: 1279px){
+  .trustbar__rail{ scroll-padding-inline: clamp(var(--sp-6), 4vw, 56px); }
 }
 
 /* Hover / focus state — 3D flip card */
