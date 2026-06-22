@@ -390,3 +390,6 @@ html{ overflow-x: clip; }
 .prod-finale__paths{ max-width: none; width: 100%; }
 .prod-finale__card{ min-height: clamp(16rem, 26vw, 22rem); justify-content: center; }
 .prod-finale__card .btn{ width: auto; min-width: 14rem; align-self: center; }
+
+/* finale: drop the floating card box — CTA sits on the section like the others */
+.prod-finale.prod-bg-white .prod-finale__card{ background: transparent; border: none; min-height: 0; padding: 0; }
