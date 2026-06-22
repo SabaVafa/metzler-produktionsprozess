@@ -52,9 +52,10 @@
 .ph--dark::after{ color: color-mix(in srgb, var(--teal-mint) 85%, transparent); }
 
 /* ── HERO ─────────────────────────────────────────────── */
-.prod-hero{ position:relative; overflow:hidden; color: var(--white); background:
-    radial-gradient(140% 120% at 78% 8%, color-mix(in srgb, var(--teal) 50%, var(--teal-dark)) 0%, transparent 55%),
-    linear-gradient(160deg, var(--teal-dark) 0%, color-mix(in srgb, var(--teal-dark) 55%, var(--schwarz)) 55%, color-mix(in srgb, var(--teal-900) 80%, var(--schwarz)) 100%); }
+.prod-hero{ position:relative; overflow:hidden; color: var(--white); background-color: var(--teal-dark);
+  background-image:
+    radial-gradient(140% 120% at 78% 8%, var(--teal) 0%, transparent 55%),
+    linear-gradient(160deg, var(--teal-dark) 0%, var(--teal-900) 55%, var(--schwarz) 100%); }
 .prod-hero__inner{ position:relative; z-index:2; display:grid; gap: clamp(2rem,5vw,4.5rem);
   grid-template-columns: 1fr; align-items:center;
   padding-block: clamp(3rem, 8vw, 6.5rem); padding-top: clamp(5rem, 9vw, 7.5rem); }
@@ -242,9 +243,10 @@
 .prod-faq__a-in p{ margin:0 0 .7rem; } .prod-faq__a-in p:last-child{ margin:0; }
 
 /* ── FINALE ───────────────────────────────────────────── */
-.prod-finale{ position:relative; overflow:hidden; color: var(--white); background:
-    radial-gradient(120% 130% at 82% 12%, color-mix(in srgb, var(--teal) 50%, var(--teal-dark)) 0%, transparent 55%),
-    linear-gradient(160deg, var(--teal-dark) 0%, color-mix(in srgb, var(--teal-dark) 55%, var(--schwarz)) 60%, color-mix(in srgb, var(--teal-900) 80%, var(--schwarz)) 100%); }
+.prod-finale{ position:relative; overflow:hidden; color: var(--white); background-color: var(--teal-dark);
+  background-image:
+    radial-gradient(120% 130% at 82% 12%, var(--teal) 0%, transparent 55%),
+    linear-gradient(160deg, var(--teal-dark) 0%, var(--teal-900) 60%, var(--schwarz) 100%); }
 .prod-finale__inner{ position:relative; z-index:2; display:grid; grid-template-columns:1fr; gap: clamp(2rem,4vw,3.5rem); align-items:center; }
 @media (min-width: 900px){ .prod-finale__inner{ grid-template-columns: 1fr 1fr; gap: clamp(3rem,5vw,5rem); } }
 .prod-finale .eyebrow{ color: var(--teal-mint); }
