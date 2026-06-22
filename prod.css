@@ -262,3 +262,18 @@
 @media (prefers-reduced-motion: reduce){
   [data-pr], .prod-chapter__media .ph, .prod-hero__media .ph, .prod-scrollcue svg{ animation:none !important; transition:none !important; opacity:1 !important; transform:none !important; }
 }
+
+/* ════ About-us alignment supplements ════ */
+.prod-center{ max-width: 56rem; margin-inline:auto; text-align:center; }
+.prod-center .section-sub{ margin-inline:auto; }
+.about-hero__ctas .tlink{ align-self:center; }
+/* craft frames hold placeholders until real photos arrive (keep ratio + reveal) */
+.prod-craft .craft-media__frame{ position:relative; aspect-ratio:1/1; }
+.prod-craft .craft-media__frame .ph{ position:absolute; inset:0; }
+/* dark sections: white section titles, mint eyebrows */
+.prod-dark .eyebrow, .prod-finale .eyebrow{ color: var(--teal-mint); }
+.prod-dark .section-title, .prod-finale .section-title{ color: var(--white); }
+.prod-faq .eyebrow, .prod-makers .eyebrow{ color: var(--teal); }
+/* deep-link "Sie sind hier" marker on the current step */
+.craft-chapter.is-here .craft-media__tag{ background: var(--teal-mint); color: var(--teal-dark); }
+.craft-chapter.is-here .craft-media__tag::after{ content:" · Sie sind hier"; }
