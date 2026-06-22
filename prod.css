@@ -381,3 +381,12 @@ html{ overflow-x: clip; }
 .prod-finale__paths{ width: 100%; max-width: 30rem; grid-template-columns: 1fr; }
 .prod-finale__card{ text-align: center; align-items: center; }
 .prod-finale__card p{ margin-inline: auto; max-width: 38ch; }
+
+/* navbar (journey chrome) back to white */
+.prod-craft{ --msty-bg: var(--white); }
+.prod-craft .msty__chrome{ background: var(--white); }
+
+/* finale: full-width, tall CTA banner */
+.prod-finale__paths{ max-width: none; width: 100%; }
+.prod-finale__card{ min-height: clamp(16rem, 26vw, 22rem); justify-content: center; }
+.prod-finale__card .btn{ width: auto; min-width: 14rem; align-self: center; }
