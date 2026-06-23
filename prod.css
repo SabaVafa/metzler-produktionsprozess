@@ -412,7 +412,14 @@ html{ overflow-x: clip; }
 
 .prod-film__nav{ position: absolute; left: 0; right: 0; bottom: 0; z-index: 4; padding: clamp(.85rem, 2vw, 1.25rem) clamp(1rem, 3vw, 2rem); background: linear-gradient(to top, color-mix(in srgb, var(--teal-900) 90%, transparent), transparent); opacity: 0; transition: opacity .25s; }
 .prod-film__progress{ height: .1875rem; border-radius: var(--r-s); background: color-mix(in srgb, var(--white) 22%, transparent); overflow: hidden; margin-bottom: .85rem; }
-.prod-film__progress i{ display: block; height: 100%; width: 0; background: var(--teal-mint); transition: width .2s linear; }
+.prod-film__progress i{ display: block; position: relative; height: 100%; width: 0; background: var(--teal-mint); transition: width .2s linear; }
+/* film scrub bar: make the rail interactive (click / drag / keyboard to seek) */
+.prod-film__progress.is-seekable{ cursor: pointer; overflow: visible; touch-action: none; transition: height .15s ease; }
+.prod-film__progress.is-seekable:hover, .prod-film__progress.is-seekable:focus-visible{ height: .375rem; }
+.prod-film__progress.is-seekable:focus-visible{ outline: none; box-shadow: 0 0 0 2px color-mix(in srgb, var(--teal-mint) 70%, transparent); }
+.prod-film__progress.is-seekable i{ border-radius: inherit; }
+.prod-film__progress.is-seekable i::after{ content: ''; position: absolute; right: 0; top: 50%; width: .75rem; height: .75rem; border-radius: 50%; background: var(--teal-mint); box-shadow: 0 1px 4px color-mix(in srgb, var(--teal-900) 60%, transparent); transform: translate(50%, -50%) scale(0); transition: transform .15s ease; }
+.prod-film__progress.is-seekable:hover i::after, .prod-film__progress.is-seekable:focus-visible i::after{ transform: translate(50%, -50%) scale(1); }
 .prod-film__chapters{ display: flex; gap: clamp(.5rem, 2vw, 1.5rem); }
 .prod-film__chapter{ flex: 1; display: flex; align-items: center; gap: .4rem; background: none; border: none; cursor: pointer; text-align: left; padding: 0; color: color-mix(in srgb, var(--white) 55%, transparent); font-size: var(--text-caption); white-space: nowrap; transition: color .3s; }
 .prod-film__chapter b{ font-weight: 700; font-variant-numeric: tabular-nums; color: color-mix(in srgb, var(--white) 40%, transparent); transition: color .3s; }
