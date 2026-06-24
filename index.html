@@ -185,7 +185,7 @@
           </div>
           <p class="about-hero__sub">Entwickelt, graviert und endmontiert am Fuße der Schwäbischen Alb<br/>– von Hand geprüft, bevor es zu Ihnen kommt.</p>
           <div class="about-hero__ctas">
-            <a href="#weg" class="btn btn-primary hero-banner__cta">Den Weg verfolgen</a>
+            <a href="#weg" class="btn btn-primary hero-banner__cta">Den Weg verfolgen<svg width="18" height="18" aria-hidden="true"><use href="#i-chevron-right"/></svg></a>
             <a href="#status" class="tlink tlink--mint prod-hero__statuslink">Schon bestellt? Fertigungsstatus ansehen</a>
           </div>
         </div>
@@ -226,22 +226,32 @@
     <div class="container">
       <div class="prod-film__head">
         <div>
-          <p class="eyebrow">Der Film</p>
+          <p class="eyebrow">Hinter den Kulissen</p>
           <h2 class="section-title">Die Werkstatt in Bewegung</h2>
+          <p>Ein Blick in unsere Werkstatt in Reutlingen – kein Stockmaterial, sondern der Ort, an dem Ihr Stück gerade entsteht.</p>
         </div>
-        <p>Ein Blick in unsere Werkstatt in Reutlingen – kein Stockmaterial, sondern der Ort, an dem Ihr Stück gerade entsteht.</p>
       </div>
-      <div class="prod-film__frame" id="prodFilm">
-        <video id="prodVideo" muted loop playsinline preload="metadata" poster="images/video-poster.png?v=2">
-          <source src="video/Praezision-braucht-Zeit.mp4" type="video/mp4">
-        </video>
-        <button class="prod-film__play" id="prodFilmPlay" type="button" aria-label="Video abspielen"><span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></button>
-        <div class="prod-film__controls">
-          <button class="prod-film__ctrl" id="prodFilmToggle" type="button" aria-label="Pause"></button>
-          <button class="prod-film__ctrl" id="prodFilmMute" type="button" aria-label="Ton einschalten"></button>
+      <div class="prod-film__stage" id="prodFilmStage">
+        <div class="prod-film__frame" id="prodFilm">
+          <video id="prodVideo" muted loop playsinline preload="metadata" poster="images/video-poster.png?v=2">
+            <source src="video/Praezision-braucht-Zeit.mp4" type="video/mp4">
+          </video>
+          <button class="prod-film__play" id="prodFilmPlay" type="button" aria-label="Video abspielen"><span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></button>
         </div>
-        <div class="prod-film__nav">
-          <div class="prod-film__progress" role="progressbar" aria-label="Video-Fortschritt" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i id="prodFilmBar"></i></div>
+        <div class="prod-film__nav" id="prodFilmNav">
+          <div class="prod-film__scrub" id="prodFilmScrub" role="slider" tabindex="0" aria-label="Video-Fortschritt – ziehen zum Spulen" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <i class="prod-film__buffer" id="prodFilmBuffer"></i>
+            <i class="prod-film__fill" id="prodFilmBar"></i>
+            <span class="prod-film__tip" id="prodFilmTip" aria-hidden="true">0:00</span>
+          </div>
+          <div class="prod-film__bar">
+            <div class="prod-film__cluster">
+              <button class="prod-film__ctrl" id="prodFilmToggle" type="button" aria-label="Abspielen"></button>
+              <button class="prod-film__ctrl" id="prodFilmMute" type="button" aria-label="Ton einschalten"></button>
+              <span class="prod-film__time"><b id="prodFilmCur">0:00</b><span class="prod-film__time-sep">/</span><span id="prodFilmDur">0:00</span></span>
+            </div>
+            <button class="prod-film__ctrl" id="prodFilmFs" type="button" aria-label="Vollbild"></button>
+          </div>
           <div class="prod-film__chapters" role="group" aria-label="Video-Kapitel">
             <button class="prod-film__chapter is-active" data-i="0" type="button" aria-label="Zu Kapitel 1: Entwicklung springen"><b>01</b><span>Entwicklung</span></button>
             <button class="prod-film__chapter" data-i="1" type="button" aria-label="Zu Kapitel 2: Gravur springen"><b>02</b><span>Gravur</span></button>
@@ -436,20 +446,20 @@
           <h2 class="section-title" style="margin-bottom:var(--sp-8)">Häufige Fragen</h2>
           <div class="faq__list">
             <details class="faq__item" open>
-              <summary class="faq__q">Welcher Edelstahl wird verwendet – V2A oder V4A?<span class="faq__q-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-              <div class="faq__a">Standardmäßig fertigen wir aus V2A (1.4301), unsere Premium-Linie aus V4A (1.4404). V4A ist salzwasserbeständig und für Küstennähe sowie aggressive Umgebungen empfohlen. Beide werden gebürstet und passivieren sich selbst – ein Nachbehandeln ist nicht nötig.</div>
+              <summary class="faq__q">Aus welchem Material fertigen Sie?<span class="faq__q-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+              <div class="faq__a">Unsere gravierten Schilder, Türklingeln und Hausnummern fertigen wir aus gebürstetem Edelstahl (V2A) – langlebig, rostbeständig und mit hochwertiger Optik. Bei Briefkästen ist das gravierte Namensschild aus Edelstahl, der Korpus aus pulverbeschichtetem Stahl.</div>
             </details>
             <details class="faq__item">
               <summary class="faq__q">Wie läuft eine individuelle Gravur ab?<span class="faq__q-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
               <div class="faq__a">Jede Gravur fertigen wir individuell für Sie – und sehr zügig. Vor der Fertigung erhalten Sie ein digitales Korrekturmuster zur Freigabe, damit Schrift, Ziffern und Position genau stimmen.</div>
             </details>
             <details class="faq__item">
-              <summary class="faq__q">Kann ich eine bestehende Klingelanlage durch die XDM10 ersetzen?<span class="faq__q-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-              <div class="faq__a">In den meisten Fällen ja – die XDM10 nutzt vorhandene 2-Draht- oder 4-Draht-Verkabelungen. Bei Unsicherheit prüfen wir die Kompatibilität kostenlos vorab. Buchen Sie einen Beratungstermin und schicken Sie uns ein Foto Ihrer aktuellen Anlage.</div>
+              <summary class="faq__q">Kann ich mein Produkt in einer Wunschfarbe bekommen?<span class="faq__q-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+              <div class="faq__a">Ja. Auf Wunsch pulverbeschichten wir Ihr Produkt in nahezu jeder RAL-Farbe – passend zu Tür, Fassade und Stil. So fügt sich Ihr Eingang harmonisch ins Gesamtbild ein.</div>
             </details>
             <details class="faq__item">
-              <summary class="faq__q">Was beinhaltet die 10-Jahres-Garantie?<span class="faq__q-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-              <div class="faq__a">Material- und Verarbeitungsfehler an vielen unserer Produkte – wir reparieren oder ersetzen kostenfrei. Elektronische Komponenten (XDM10, Funkklingeln) haben 2 Jahre gesetzliche Gewährleistung, Verschleißteile sind ausgenommen. Es gelten die <a class="tlink" href="https://edelstahl-tuerklingel.de/metzler-garantieerklaerung" target="_blank" rel="noopener">Garantiebedingungen</a>.</div>
+              <summary class="faq__q">Kann ich Klingel, Briefkasten &amp; Co. selbst montieren?<span class="faq__q-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+              <div class="faq__a">Ja – die meisten unserer Produkte sind für die Selbstmontage gemacht. Türklingeln, Briefkästen und Hausnummern bringen Sie mit beiliegender Bohrschablone und bebilderter Anleitung selbst an. Den elektrischen Anschluss von Sprechanlagen wie der XDM10 sollte eine Elektrofachkraft übernehmen – die nötige Vorbereitung (2- oder 4-Draht) ist in der Anleitung beschrieben. Bei Fragen hilft Ihnen unsere Hotline Mo–Fr gerne weiter.</div>
             </details>
             <details class="faq__item">
               <summary class="faq__q">Wie sind Versand und Rückgabe geregelt?<span class="faq__q-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
