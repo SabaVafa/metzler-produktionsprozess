@@ -10,3 +10,5 @@ Thumbs.db
 
 # large media (kept locally, not in git)
 video/*.mp4
+# except the web-optimized film used by GitHub Pages
+!video/praezision-braucht-zeit-web.mp4
