@@ -471,3 +471,19 @@ html{ overflow-x: clip; }
 
 .prod-film__play:focus-visible, .prod-film__ctrl:focus-visible, .prod-film__chapter:focus-visible{ outline: 2px solid var(--teal-mint); outline-offset: 3px; }
 @media (max-width: 600px){ .prod-film__chapter span{ display: none; } .prod-film__chapter{ flex: 0 0 auto; } .prod-film__chapters{ justify-content: space-between; } }
+
+/* ── Mobile film controls: the glass bar was swallowing ~77% of a phone-size
+   video. Strip to essentials — hide the chapter tabs (too small to tap; the
+   scrub ticks show progress and the full 6-step journey is right below) and
+   slim the scrub + single control row so the footage stays the hero. ── */
+@media (max-width: 767px){
+  .prod-film__chapters{ display: none; }
+  .prod-film__nav{ padding: .5rem .7rem .6rem; }
+  .prod-film__scrub{ height: .25rem; margin-bottom: .55rem; }
+  .prod-film__scrub:hover, .prod-film__scrub:focus-visible{ height: .375rem; }
+  .prod-film__bar{ margin-bottom: 0; gap: .5rem; }
+  .prod-film__cluster{ gap: .4rem; }
+  .prod-film__ctrl{ width: 2.1rem; height: 2.1rem; }
+  .prod-film__ctrl svg{ width: 1rem; height: 1rem; }
+  .prod-film__time{ font-size: var(--text-caption); margin-left: .25rem; }
+}
