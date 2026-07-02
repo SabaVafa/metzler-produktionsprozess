@@ -366,6 +366,16 @@ html{ overflow-x: clip; }
 .prod .about-hero{ overflow: hidden; }
 
 /* ════ Hero — black band (section) with the content contained via .container, matching the About us page ════ */
+/* Breadcrumb (About-us approach): overlaid on the hero band, light-on-dark */
+.prod .about-hero{ position: relative; }
+.crumb{ position: absolute; top: 0; left: 0; right: 0; z-index: 4; background: transparent; padding-block: 16px; pointer-events: none; }
+.crumb .container{ pointer-events: none; }
+.crumb ol{ display: flex; align-items: center; gap: var(--sp-2); font-size: var(--text-body-sm); color: rgba(255,255,255,0.65); margin: 0; padding: 0; list-style: none; width: max-content; pointer-events: auto; text-shadow: 0 1px 2px rgba(0,0,0,0.35); }
+.crumb a{ color: rgba(255,255,255,0.65); text-decoration: none; }
+.crumb a:hover{ color: #fff; }
+.crumb li{ display: inline-flex; align-items: center; }
+.crumb li svg{ width: 14px; height: 14px; color: rgba(255,255,255,0.45); }
+.crumb [aria-current]{ color: #fff; font-weight: 500; }
 .prod .about-hero__copy-col{ padding-inline: 0; }
 .prod .about-hero__photo-col{ padding-right: 0; }
 /* CTAs size to their labels (the "Fertigungsstatus" secondary is longer than the About-us labels) */
