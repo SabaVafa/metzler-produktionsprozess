@@ -478,6 +478,8 @@ html{ overflow-x: clip; }
    slim the scrub + single control row so the footage stays the hero. ── */
 @media (max-width: 767px){
   .prod-film__chapters{ display: none; }
+  .prod-film__play span{ width: 3.5rem; height: 3.5rem; }
+  .prod-film__play svg{ width: 1.375rem; height: 1.375rem; }
   .prod-film__nav{ padding: .5rem .7rem .6rem; }
   .prod-film__scrub{ height: .25rem; margin-bottom: .55rem; }
   .prod-film__scrub:hover, .prod-film__scrub:focus-visible{ height: .375rem; }
