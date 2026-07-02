@@ -1648,7 +1648,7 @@ main.about .about-editorial__tier--bottom .section-title i{
   --msty-rule: rgba(0, 0, 0, 0.12);
 }
 .craft-chapter{
-  padding-block: clamp(56px, 6vw, 88px);
+  padding-block: var(--about-section-y);   /* same rhythm as every section */
   position: relative;
 }
 .craft-chapter + .craft-chapter{ border-top: 1px solid var(--craft-rule); }
