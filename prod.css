@@ -290,11 +290,12 @@
 .faq__q { width: 100%; display: flex; justify-content: space-between; align-items: center; text-align: left; padding: var(--sp-6) var(--sp-5); font-size: var(--text-h4); font-weight: 700; color: var(--schwarz); gap: var(--sp-6); cursor: pointer; transition: color 0.18s ease; list-style: none; }
 .faq__q::-webkit-details-marker { display: none; }
 .faq__item[open] .faq__q { color: var(--teal); }
-.faq__q-icon { width: 36px; height: 36px; border-radius: var(--r-pill); background: var(--paper-white); border: 1px solid var(--graphite-300); display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--schwarz); transition: background 0.2s ease, border-color 0.2s ease, transform 0.3s ease; }
-.faq__q-icon svg { width: 14px; height: 14px; transition: transform 0.3s ease; }
-.faq__item:hover .faq__q-icon { border-color: var(--teal); }
-.faq__item[open] .faq__q-icon { background: rgba(1, 82, 83, 0.08); border-color: var(--teal); color: var(--teal); }
-.faq__item[open] .faq__q-icon svg { transform: rotate(45deg); }
+/* frameless drop-arrow (matches the category page) */
+.faq__q-icon { flex: 0 0 auto; width: 24px; height: 24px; display: grid; place-items: center; background: none; border: 0; border-radius: 0; color: var(--graphite-600); transition: color 0.2s ease; }
+.faq__q-icon svg { width: 1.5rem; height: 1.5rem; transition: transform 0.2s ease; }
+.faq__item:hover .faq__q-icon { color: var(--teal); }
+.faq__item[open] .faq__q-icon { background: none; border: 0; color: var(--teal); }
+.faq__item[open] .faq__q-icon svg { transform: scaleY(-1); }
 .faq__a { padding: 0 var(--sp-5) var(--sp-6); color: rgba(0, 0, 0, 0.72); line-height: 1.7; max-width: 65ch; font-size: var(--text-body); }
 .faq__support { background: var(--paper-white); border: 1px solid var(--graphite-300); border-radius: var(--r-l); padding: var(--sp-8); align-self: start; position: sticky; top: 110px; }
 .faq__support h3 { font-size: var(--text-h3); font-weight: 700; color: var(--schwarz); letter-spacing: -0.01em; }
