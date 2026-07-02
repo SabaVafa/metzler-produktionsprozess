@@ -339,7 +339,7 @@
 
 /* hero: restore text left/right padding on the copy column (full-bleed bg, inset text) */
 .prod .about-hero__copy-col{ padding-inline: clamp(1.5rem, 5vw, 7.25rem); }
-.prod .about-hero__photo-col{ margin-inline: 0; }
+/* (mobile keeps the style.css break-out so the image runs edge-to-edge) */
 /* kill any stray horizontal-overflow strip on the right edge (clip is sticky-safe) */
 html{ overflow-x: clip; }
 
@@ -376,11 +376,11 @@ html{ overflow-x: clip; }
 .crumb li{ display: inline-flex; align-items: center; }
 .crumb li svg{ width: 14px; height: 14px; color: rgba(255,255,255,0.45); }
 .crumb [aria-current]{ color: #fff; font-weight: 500; }
-/* mobile/tablet: the breadcrumb overlaps the hero image (image is on top when
-   stacked) — add a subtle top-down scrim so white text meets contrast over any
-   photo, bright areas included. Desktop keeps the breadcrumb over the dark band. */
+/* mobile/tablet: the hero stacks with the image on top, so instead of overlaying
+   the breadcrumb on the photo, give it its own solid bar above the image
+   (guaranteed contrast, no scrim needed). Desktop keeps the overlaid breadcrumb. */
 @media (max-width: 1279px){
-  .crumb{ background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0)); padding-bottom: 32px; }
+  .prod .crumb{ position: static; background: #000; }
 }
 .prod .about-hero__copy-col{ padding-inline: 0; }
 .prod .about-hero__photo-col{ padding-right: 0; }
