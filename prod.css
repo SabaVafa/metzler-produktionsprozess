@@ -312,9 +312,9 @@
 }
 
 /* ════ Hero: full-bleed black banner ════ */
-.prod .about-hero{ background:#000; }
+.prod .about-hero{ background: var(--schwarz); }
 /* hero width now handled by .container (matches About us proportions) */
-.prod .about-hero__copy-col, .prod .about-hero__photo-col{ background:#000; }
+.prod .about-hero__copy-col, .prod .about-hero__photo-col{ background: var(--schwarz); }
 .prod .about-hero h1 span{ display:block; }
 /* hero: inset the image from the right edge to match the text's left padding */
 .prod .about-hero__photo-col{ padding-right: clamp(1.5rem, 5vw, 7.25rem); }
@@ -380,7 +380,7 @@ html{ overflow-x: clip; }
    the breadcrumb on the photo, give it its own solid bar above the image
    (guaranteed contrast, no scrim needed). Desktop keeps the overlaid breadcrumb. */
 @media (max-width: 1279px){
-  .prod .crumb{ position: static; background: #000; }
+  .prod .crumb{ position: static; background: var(--schwarz); }
 }
 .prod .about-hero__copy-col{ padding-inline: 0; }
 .prod .about-hero__photo-col{ padding-right: 0; }
