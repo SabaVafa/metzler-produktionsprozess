@@ -101,7 +101,7 @@
 .prod-film__head .eyebrow{ color: var(--teal-mint); }
 .prod-film__head h2{ color: var(--white); }
 .prod-film__head p{ max-width: 58ch; color: color-mix(in srgb, var(--white) 66%, transparent); font-size: var(--text-body); margin: var(--sp-5) auto 0; }
-.prod-film__frame{ position:relative; border-radius: var(--r-xl) var(--r-xl) 0 0; overflow:hidden; aspect-ratio:16/9;
+.prod-film__frame{ position:relative; border-radius: var(--r-xl); overflow:hidden; aspect-ratio:16/9;
   background: var(--teal-900); box-shadow: var(--shadow-xl); cursor:pointer; }
 .prod-film__frame video{ width:100%; height:100%; object-fit:cover; display:block; }
 .prod-film__frame .ph{ position:absolute; inset:0; }
@@ -407,7 +407,7 @@ html{ overflow-x: clip; }
 
 /* ── Control bar: its own surface, docked directly under the film, always on ── */
 .prod-film__stage{ position: relative; }
-.prod-film__nav{ background: color-mix(in srgb, var(--black) 64%, transparent); -webkit-backdrop-filter: blur(18px) saturate(150%); backdrop-filter: blur(18px) saturate(150%); border: .0625rem solid color-mix(in srgb, var(--white) 12%, transparent); border-top: none; border-radius: 0 0 var(--r-xl) var(--r-xl); box-shadow: 0 .75rem 2rem color-mix(in srgb, var(--black) 22%, transparent); padding: clamp(.8rem, 2vw, 1.1rem) clamp(1rem, 2.5vw, 1.5rem); color: var(--white); }
+.prod-film__nav{ position: absolute; left: 0; right: 0; bottom: 0; z-index: 4; background: color-mix(in srgb, var(--schwarz) 34%, transparent); -webkit-backdrop-filter: blur(22px) saturate(140%); backdrop-filter: blur(22px) saturate(140%); border: none; border-top: .0625rem solid color-mix(in srgb, var(--white) 22%, transparent); border-radius: 0 0 var(--r-xl) var(--r-xl); box-shadow: 0 -.25rem 1.5rem color-mix(in srgb, var(--black) 22%, transparent); padding: clamp(.8rem, 2vw, 1.1rem) clamp(1rem, 2.5vw, 1.5rem); color: var(--white); }
 
 /* — scrub rail (click / drag / keyboard, with buffered track, ticks & time tooltip) — */
 .prod-film__scrub{ position: relative; height: .3125rem; border-radius: var(--r-pill); background: color-mix(in srgb, var(--white) 18%, transparent); cursor: pointer; touch-action: none; margin-bottom: .9rem; transition: height .15s ease; }
