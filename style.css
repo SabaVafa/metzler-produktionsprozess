@@ -635,6 +635,10 @@ main.about .section-title i{
      device / edge shadow clips them. */
   .trustbar__viewport .strip-arrow--prev{ left: clamp(var(--sp-6), 4vw, 56px); }
   .trustbar__viewport .strip-arrow--next{ right: clamp(var(--sp-6), 4vw, 56px); }
+  /* Stats strip: align its arrows to the same page margin as the badge rail's —
+     otherwise they sit at the 8px default and overlap the first/last stat. */
+  .about-truststrip .strip-arrow--prev{ left: clamp(var(--sp-6), 4vw, 56px); }
+  .about-truststrip .strip-arrow--next{ right: clamp(var(--sp-6), 4vw, 56px); }
 }
 
 /* ============== SECTION 2 — STORY ============== */
