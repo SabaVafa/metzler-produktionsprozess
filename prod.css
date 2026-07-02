@@ -376,6 +376,12 @@ html{ overflow-x: clip; }
 .crumb li{ display: inline-flex; align-items: center; }
 .crumb li svg{ width: 14px; height: 14px; color: rgba(255,255,255,0.45); }
 .crumb [aria-current]{ color: #fff; font-weight: 500; }
+/* mobile/tablet: the breadcrumb overlaps the hero image (image is on top when
+   stacked) — add a subtle top-down scrim so white text meets contrast over any
+   photo, bright areas included. Desktop keeps the breadcrumb over the dark band. */
+@media (max-width: 1279px){
+  .crumb{ background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0)); padding-bottom: 32px; }
+}
 .prod .about-hero__copy-col{ padding-inline: 0; }
 .prod .about-hero__photo-col{ padding-right: 0; }
 /* CTAs size to their labels (the "Fertigungsstatus" secondary is longer than the About-us labels) */
