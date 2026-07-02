@@ -973,9 +973,11 @@
            so the user doesn't see a chevron that's about to disappear after a
            single tap. atStart still uses the small 4px buffer – left arrow
            stays available throughout the back-scroll. */
-        var step = scroller.clientWidth * 0.7;
         var atStart = scroller.scrollLeft <= startThreshold + 4;
-        var atEnd   = scroller.scrollLeft + scroller.clientWidth >= scroller.scrollWidth - step;
+        /* Hide next only within a hair of the true end, so a single tap can't
+           make the chevron vanish before the last item is reachable (wide
+           mobile items previously left the last stat behind the hidden arrow). */
+        var atEnd   = scroller.scrollLeft + scroller.clientWidth >= scroller.scrollWidth - 8;
         if (prev) prev.classList.toggle('is-hidden', atStart);
         if (next) next.classList.toggle('is-hidden', atEnd);
       }
@@ -1160,6 +1162,6 @@
   })();
 </script>
 
-<script src="prod.js?v=4"></script>
+<script src="prod.js?v=5"></script>
 </body>
 </html>

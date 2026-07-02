@@ -108,6 +108,9 @@
       } else {
         var req = el.requestFullscreen || el.webkitRequestFullscreen;
         if(req){ var r2 = req.call(el); if(r2 && r2.catch) r2.catch(function(){}); }
+        /* iPhone Safari can't fullscreen a <div> — only the <video> element,
+           via its own API. Fall back to that so the button works on mobile. */
+        else if(vid.webkitEnterFullscreen){ try{ vid.webkitEnterFullscreen(); }catch(_){} }
       }
     }
     function syncFs(){ if(fsBtn){ var on = !!fsElement(); fsBtn.innerHTML = on ? I_FSX : I_FS; fsBtn.setAttribute('aria-label', on ? 'Vollbild verlassen' : 'Vollbild'); } }
