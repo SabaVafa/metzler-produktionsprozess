@@ -312,7 +312,7 @@
 
 /* ════ Hero: full-bleed black banner ════ */
 .prod .about-hero{ background:#000; }
-.prod .about-hero__primary{ max-width:none; padding-inline:0; margin-inline:0; }
+/* hero width now handled by .container (matches About us proportions) */
 .prod .about-hero__copy-col, .prod .about-hero__photo-col{ background:#000; }
 .prod .about-hero h1 span{ display:block; }
 /* hero: inset the image from the right edge to match the text's left padding */
@@ -364,8 +364,7 @@ html{ overflow-x: clip; }
 /* hero: clip to itself as a right-edge-strip guard */
 .prod .about-hero{ overflow: hidden; }
 
-/* ════ Hero v2 — full-bleed black bg, content inset symmetrically via the grid padding ════ */
-.prod .about-hero__primary{ padding-inline: clamp(1.5rem, 5vw, 7.25rem); max-width: none; margin-inline: 0; }
+/* ════ Hero — black band (section) with the content contained via .container, matching the About us page ════ */
 .prod .about-hero__copy-col{ padding-inline: 0; }
 .prod .about-hero__photo-col{ padding-right: 0; }
 
