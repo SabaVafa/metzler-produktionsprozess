@@ -145,7 +145,7 @@ main.about .section-title i{
      text floating in a sea of dark space. The image takes the rest. */
   grid-template-columns: min(calc(44% + 16px), 660px) 1fr;
   gap: clamp(24px, 3vw, 56px);
-  aspect-ratio: 3.4 / 1;
+  aspect-ratio: 3.4 / 1.2;
   align-items: stretch;
   background: transparent;
   overflow: visible;
