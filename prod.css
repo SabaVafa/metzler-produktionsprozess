@@ -383,7 +383,7 @@ html{ overflow-x: clip; }
   .prod .crumb{ position: static; background: var(--schwarz); }
 }
 .prod .about-hero__copy-col{ padding-inline: 0; }
-.prod .about-hero__photo-col{ padding-right: 0; }
+.prod .about-hero__photo-col{ padding-right: 0; border: 0; }
 /* CTAs size to their labels (the "Fertigungsstatus" secondary is longer than the About-us labels) */
 .prod .about-hero__ctas .btn{ flex: 0 1 auto; }
 
