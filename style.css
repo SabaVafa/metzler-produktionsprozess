@@ -1701,7 +1701,7 @@ main.about .about-editorial__tier--bottom .section-title i{
   padding-block: clamp(20px, 3vw, 48px);
 }
 .craft-eyebrow{
-  margin: 0 0 clamp(20px, 2vw, 28px);
+  margin: 0 0 var(--sp-3);   /* 12px — chapters use the tighter eyebrow gap */
   font-size: var(--text-caption);
   font-weight: 700;
   line-height: 1.4;
