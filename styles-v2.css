@@ -134,7 +134,8 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; }
 .eyebrow {
   font-size: var(--text-caption);
   font-weight: 700;
-  letter-spacing: 0.18em;
+  line-height: 1.4;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--teal);
   margin-bottom: var(--sp-3);

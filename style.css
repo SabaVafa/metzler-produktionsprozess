@@ -984,8 +984,10 @@ main.about .section-title i{
    eyebrow → H2 = 20 px, H2 → sub = 20 px (same as banner's chips → H1 → sub). */
 .about .eyebrow{
   margin-bottom: var(--sp-5);
-  color: var(--graphite-700, #54545C);
+  color: var(--graphite-600);
 }
+/* Eyebrow line-height must beat the global `.about p{ line-height: var(--lh-body) }`. */
+.about .eyebrow, .about .craft-eyebrow{ line-height: 1.4; }
 .about .section-sub{ margin-top: var(--sp-5); }
 
 /* Story-section CTA — text link, consistent with the craft/stories links
@@ -1701,10 +1703,11 @@ main.about .about-editorial__tier--bottom .section-title i{
 .craft-eyebrow{
   margin: 0 0 clamp(20px, 2vw, 28px);
   font-size: var(--text-caption);
-  font-weight: 600;
-  letter-spacing: 0.18em;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--craft-muted);
+  color: var(--graphite-600);
 }
 .craft-headline{
   margin: 0 0 clamp(20px, 2vw, 28px);
