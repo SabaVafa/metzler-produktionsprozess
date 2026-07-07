@@ -15,9 +15,6 @@
 .prod-sec{ padding-block: var(--about-section-y); }
 .prod .eyebrow{ display:inline-block; }
 .prod em, .prod .accent{ font-style: normal; color: var(--teal-mint); }
-/* Buttons: 44px height across the page (comfortable min touch target). The
-   shared .btn base is 42px; this lifts every standard button on the page. */
-.prod .btn{ height: 2.75rem; }
 
 /* ── THE FILM ─────────────────────────────────────────── */
 .prod-film__head{ text-align: center; margin-bottom: var(--about-header-gap); }

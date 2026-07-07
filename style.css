@@ -290,7 +290,7 @@ main.about .section-title i{
    1440 px or below). */
 .about-hero h1{
   color: var(--white);
-  font-size: clamp(1.5rem, 2.4vw, 2.2rem);
+  font-size: 2rem;
   line-height: 1.25;
   font-weight: 700;
   letter-spacing: -0.015em;
@@ -317,7 +317,7 @@ main.about .section-title i{
   gap: var(--sp-1);
 }
 .about-hero__stat b{
-  font-size: clamp(20px, 1.6vw, 26px);
+  font-size: clamp(20px, 1.6vw, 24px);
   font-weight: 700;
   color: var(--white);
   line-height: 1;
@@ -439,7 +439,6 @@ main.about .section-title i{
     max-width: none;
   }
   .about-hero h1{
-    font-size: clamp(28px, 4.4vw, 40px);
     max-width: none;
   }
   /* Full-bleed banner: break out of the container's page inset so the image
@@ -466,7 +465,6 @@ main.about .section-title i{
   .about-hero__primary{ row-gap: 0; }
   .about-hero__copy{ padding-block: 40px; }
   .about-hero__photo{ object-position: center 35%; }
-  .about-hero h1{ font-size: clamp(32px, 8vw, 44px); }
   /* Drop the desktop hard line break — let the sub wrap naturally on phones */
   .about-hero__sub br{ display: none; }
   /* CTAs stack full-width — two German labels are too long to sit
@@ -504,7 +502,7 @@ main.about .section-title i{
   gap: var(--sp-1);
 }
 .about-truststrip__stat b{
-  font-size: clamp(20px, 1.6vw, 26px);
+  font-size: clamp(20px, 1.6vw, 24px);
   font-weight: 700;
   color: var(--schwarz);
   line-height: 1;
@@ -1234,7 +1232,7 @@ main.about .section-title i{
   margin: 0;
   font-family: Georgia, 'Times New Roman', serif;
   font-style: italic;
-  font-size: clamp(22px, 1.8vw, 26px);
+  font-size: clamp(20px, 1.8vw, 24px);
   font-weight: 400;
   color: var(--schwarz);
   line-height: 1.2;
@@ -1710,7 +1708,7 @@ main.about .about-editorial__tier--bottom .section-title i{
 }
 .craft-headline{
   margin: 0 0 clamp(20px, 2vw, 28px);
-  font-size: clamp(34px, 4.2vw, 56px);
+  font-size: var(--text-display);
   line-height: 1.05;
   letter-spacing: -0.025em;
   font-weight: 700;
@@ -1730,12 +1728,12 @@ main.about .about-editorial__tier--bottom .section-title i{
   .craft-headline span:first-child::after{ content: " – "; }
 }
 @media (max-width: 767px){
-  .craft-headline{ font-size: clamp(40px, 11vw, 48px); }
+  .craft-headline{ font-size: 2rem; }
 }
 .craft-body{
   margin: 0;
   max-width: 46ch;
-  font-size: clamp(17px, 1.3vw, 20px);
+  font-size: clamp(16px, 1.3vw, 20px);
   line-height: 1.6;
   color: var(--craft-fg);
   opacity: 0.92;
@@ -1773,7 +1771,7 @@ main.about .about-editorial__tier--bottom .section-title i{
      column like the headline does. */
   .craft-body{ max-width: none; }
 }
-@media (max-width: 767px){
+@media (max-width: 1023px){
   /* Four longer labels don't fit a fixed row on phones — make the tab strip a
      single-line horizontal scroller (labels stay on one line, swipe to reveal). */
   .craft-chrome .msty__tabs{
@@ -1933,330 +1931,6 @@ main.about .about-editorial__tier--bottom .section-title i{
 }
 .about-timeline article p{ font-size: var(--text-body); color: var(--schwarz); margin: 0; }
 
-/* ============== SECTION 8 — LOCATIONS (editorial card-less grid) ============== */
-.about-locations h2 i{
-  font-style: italic;
-  font-weight: 700;
-  color: var(--teal);
-}
-/* Full-bleed photo-card style — the photo fills the entire card,
-   typography overlays the lower-third on a soft dark gradient.
-   Inspired by premium travel/booking apps. Asymmetric layout
-   keeps Reutlingen (HQ) as the dominant anchor. */
-/* 3D coverflow — cards arc around the active center card.
-   The five locations form a curved row; click any card to bring it
-   forward and rotate the others into the arc. */
-.about-locations__grid{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: clamp(2px, 0.4vw, 8px);
-  perspective: 1400px;
-  padding-block: clamp(var(--sp-8), 4vw, var(--sp-12));
-}
-
-.about-loc{
-  position: relative;
-  display: block;
-  flex: 0 0 clamp(210px, 19vw, 280px);
-  aspect-ratio: 4 / 5;
-  border-radius: var(--r-l);
-  overflow: hidden;
-  background: color-mix(in srgb, var(--schwarz) 6%, var(--white));
-  box-shadow:
-    0 2px 4px rgba(0,0,0,0.05),
-    0 14px 36px rgba(0,0,0,0.12);
-  transition: transform 1200ms cubic-bezier(.22, .8, .24, 1),
-              filter 1200ms cubic-bezier(.22, .8, .24, 1),
-              box-shadow 1200ms ease;
-  isolation: isolate;
-  cursor: pointer;
-  transform-origin: center center;
-  transform-style: preserve-3d;
-  will-change: transform;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
-
-/* Active card — center of the arc, faces the viewer head-on.
-   Almost no outer shadow + a lighter gradient overlay so it reads bright. */
-.about-loc[data-pos="0"],
-.about-loc.is-active{
-  transform: translateZ(80px) scale(1.05);
-  z-index: 10;
-  box-shadow:
-    0 1px 3px rgba(0,0,0,0.02),
-    0 6px 14px rgba(0,0,0,0.03);
-}
-.about-loc[data-pos="0"]::after,
-.about-loc.is-active::after{
-  background: linear-gradient(
-    180deg,
-    rgba(0,0,0,0) 45%,
-    rgba(0,0,0,0.22) 72%,
-    rgba(0,0,0,0.72) 100%
-  );
-}
-/* Step-1 neighbors — slight tilt, slight recede */
-.about-loc[data-pos="-1"]{
-  transform: translateX(38px) rotateY(32deg) scale(0.92);
-  filter: brightness(0.86) saturate(0.92);
-  z-index: 6;
-}
-.about-loc[data-pos="1"]{
-  transform: translateX(-38px) rotateY(-32deg) scale(0.92);
-  filter: brightness(0.86) saturate(0.92);
-  z-index: 6;
-}
-/* Step-2 outer — stronger tilt, deeper recede */
-.about-loc[data-pos="-2"]{
-  transform: translateX(72px) rotateY(48deg) scale(0.82);
-  filter: brightness(0.72) saturate(0.85);
-  z-index: 3;
-}
-.about-loc[data-pos="2"]{
-  transform: translateX(-72px) rotateY(-48deg) scale(0.82);
-  filter: brightness(0.72) saturate(0.85);
-  z-index: 3;
-}
-
-.about-loc__image{
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  border-radius: inherit;
-  overflow: hidden;
-}
-.about-loc__image img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 800ms cubic-bezier(.2, .7, .2, 1);
-}
-.about-loc:hover .about-loc__image img{ transform: scale(1.05); }
-
-/* Dark gradient — masks the bottom of the image so overlay text reads */
-.about-loc::after{
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: linear-gradient(
-    180deg,
-    rgba(0,0,0,0) 40%,
-    rgba(0,0,0,0.20) 62%,
-    rgba(0,0,0,0.78) 100%
-  );
-  border-radius: inherit;
-  pointer-events: none;
-}
-
-/* Body — city + caption pinned to the lower-left, overlaid on the image */
-.about-loc__body{
-  position: absolute;
-  left: clamp(18px, 1.6vw, 28px);
-  right: clamp(18px, 1.6vw, 28px);
-  bottom: clamp(16px, 1.4vw, 26px);
-  z-index: 3;
-  color: var(--white);
-}
-.about-loc h3{
-  font-size: clamp(1.125rem, 1.4vw, 1.5rem);
-  font-weight: 700;
-  margin: 0 0 4px;
-  line-height: 1.1;
-  letter-spacing: -0.01em;
-  color: var(--white);
-}
-.about-loc p{
-  font-size: var(--text-body-sm);
-  color: rgba(255,255,255,0.82);
-  margin: 0;
-  line-height: 1.4;
-}
-
-/* Editorial number — top-left, large light-weight mono */
-.about-loc__num{
-  position: absolute;
-  top: clamp(14px, 1.2vw, 22px);
-  left: clamp(18px, 1.6vw, 28px);
-  z-index: 3;
-  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  font-weight: 300;
-  font-size: clamp(28px, 2.4vw, 44px);
-  line-height: 1;
-  color: var(--white);
-  letter-spacing: -0.02em;
-  text-shadow: 0 1px 14px rgba(0,0,0,0.4);
-  font-feature-settings: "tnum";
-}
-.about-loc--hq .about-loc__num{
-  font-size: clamp(44px, 4vw, 72px);
-}
-
-/* HQ tag — top-right, solid teal pill */
-.about-loc__hq{
-  position: absolute;
-  top: clamp(14px, 1.2vw, 22px);
-  right: clamp(18px, 1.6vw, 28px);
-  z-index: 3;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.26em;
-  text-transform: uppercase;
-  color: var(--white);
-  background: var(--graphite-800);   /* DS Graphite 800 — dark gray for label-on-image legibility */
-  padding: 6px 10px 5px;
-  border-radius: var(--r-s);          /* DS border-radius-sm (2px) — the badge radius token */
-  line-height: 1;
-}
-
-/* Tablet + mobile: the 3D coverflow needs full desktop width (its arc
-   transforms push cards far past the viewport). Flatten it into a clipped
-   horizontal scroll-snap row — reset every data-pos transform/filter so
-   the cards sit upright. ~2 cards visible on tablet, 1 per swipe on phone. */
-@media (max-width: 1023px){
-  .about-locations__grid{
-    justify-content: flex-start;
-    perspective: none;
-    gap: var(--sp-4);
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    padding-inline: clamp(var(--sp-6), 4vw, 24px);
-  }
-  .about-locations__grid::-webkit-scrollbar{ display: none; }
-  .about-locations__grid .about-loc,
-  .about-locations__grid .about-loc[data-pos]{
-    transform: none !important;
-    filter: none !important;
-    flex: 0 0 46%;
-    max-width: 360px;
-    scroll-snap-align: center;
-  }
-}
-@media (max-width: 767px){
-  .about-locations__grid .about-loc,
-  .about-locations__grid .about-loc[data-pos]{
-    flex: 0 0 78%;
-    max-width: 320px;
-  }
-}
-
-
-/* ============== SECTION 9 — AWARDS & VOICES ============== */
-.about-proof h2 i{
-  font-style: italic;
-  font-weight: 700;
-  color: var(--teal);
-}
-.about-award-hero{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--sp-5);
-  padding: clamp(var(--sp-8), 4vw, var(--sp-12)) var(--sp-6);
-  margin-block: var(--sp-10);
-  background: var(--white);
-  border: 1px solid var(--graphite-300);
-  border-radius: var(--r-l);
-}
-.about-award-hero img{
-  max-width: 200px;
-  width: 100%;
-  height: auto;
-}
-.about-award-hero__years{
-  display: flex;
-  gap: clamp(var(--sp-6), 3vw, var(--sp-12));
-  font-size: var(--text-h3);
-  font-weight: 700;
-  color: var(--schwarz);
-  letter-spacing: -0.01em;
-}
-.about-award-hero__caption{
-  font-size: var(--text-body);
-  color: #6a6a6a;
-  text-align: center;
-  margin: 0;
-}
-.about-numbers{
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--sp-6);
-  margin-bottom: var(--sp-16);
-  text-align: center;
-}
-.about-numbers > div{
-  padding: var(--sp-8) var(--sp-4);
-  background: var(--white);
-  border: 1px solid var(--graphite-300);
-  border-radius: var(--r-l);
-}
-.about-numbers b{
-  display: block;
-  font-size: var(--text-display);
-  color: var(--schwarz);
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: -.02em;
-  margin-bottom: var(--sp-1);
-}
-.about-numbers span{ font-size: var(--text-caption); color: #6a6a6a; letter-spacing: .02em; }
-
-.about-testimonials{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--sp-6);
-  margin-bottom: var(--sp-12);
-}
-.about-testimonials blockquote{
-  margin: 0;
-  padding: var(--sp-8);
-  background: var(--white);
-  border: 1px solid var(--graphite-300);
-  border-radius: var(--r-l);
-  position: relative;
-}
-.about-testimonials blockquote::before{
-  content: "\201C";
-  position: absolute;
-  top: -12px; left: var(--sp-5);
-  font-size: 70px;
-  color: var(--teal);
-  line-height: 1;
-  font-family: Georgia, serif;
-}
-.about-testimonials blockquote p{
-  margin: 0 0 var(--sp-3);
-  font-size: var(--text-body);
-  color: var(--schwarz);
-  font-style: italic;
-}
-.about-testimonials blockquote footer{
-  font-size: var(--text-caption);
-  color: #6a6a6a;
-  font-weight: 600;
-}
-
-.about-awards{
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: var(--sp-6);
-  align-items: center;
-  padding-top: var(--sp-12);
-  border-top: 1px solid var(--graphite-300);
-}
-.about-awards figure{ margin: 0; text-align: center; }
-.about-awards img{
-  height: 80px; width: auto;
-  margin: 0 auto var(--sp-3);
-  object-fit: contain;
-}
-.about-awards figcaption{ font-size: var(--text-caption); color: #6a6a6a; line-height: 1.4; }
-
 /* ============== SECTION 9 — METZLER STORIES (anchored chapters + parallax) ============== */
 .msty{
   --msty-bg: var(--about-bg-soft);
@@ -2397,7 +2071,7 @@ main.about .about-editorial__tier--bottom .section-title i{
   height: 2px;
   width: 100%;
   background: color-mix(in srgb, var(--msty-fg) 12%, transparent);
-  border-radius: 1px;
+  border-radius: var(--r-s);
   overflow: hidden;
 }
 .msty__tab-fill{
@@ -2469,617 +2143,6 @@ main.about .about-editorial__tier--bottom .section-title i{
     margin-top: 8px;
   }
 }
-
-/* ─── Chapter (one story = one composed scene) ─── */
-.msty__chapter{
-  padding-block: clamp(56px, 6vw, 88px);
-  position: relative;
-  overflow: hidden;
-}
-.msty__chapter + .msty__chapter{
-  border-top: 1px solid var(--msty-rule);
-}
-.msty__chapter-inner{
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: clamp(48px, 5vw, 96px);
-  align-items: stretch;
-  min-height: 60vh;
-}
-.msty__chapter--flip .msty__chapter-inner{
-  grid-template-columns: 0.9fr 1.1fr;
-}
-.msty__chapter--flip .msty__media{ order: 2; }
-.msty__chapter--flip .msty__copy{ order: 1; }
-
-/* ─── Media frame (image fills column height; clip-path reveal + parallax) ─── */
-.msty__media{
-  position: relative;
-  align-self: stretch;
-  display: flex;
-}
-.msty__media-frame{
-  position: relative;
-  width: 100%;
-  flex: 1;
-  min-height: 480px;
-  overflow: hidden;
-  border-radius: var(--r-l);
-  background: color-mix(in srgb, var(--msty-fg) 6%, var(--msty-bg));
-  /* Premium frame: soft elevated shadow + subtle hairline border */
-  box-shadow:
-    0 1px 2px rgba(0,0,0,0.04),
-    0 8px 16px rgba(0,0,0,0.04),
-    0 24px 48px rgba(0,0,0,0.06);
-  clip-path: inset(6% 6% 6% 6% round 8px);
-  transition: clip-path 1100ms cubic-bezier(.2, .7, .2, 1),
-              box-shadow 600ms ease;
-  will-change: clip-path;
-}
-.msty__media-frame::after{
-  /* Inner hairline frame — sits on top of the image for a print/gallery feel */
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  pointer-events: none;
-  z-index: 2;
-}
-.msty__chapter.is-visible .msty__media-frame{
-  box-shadow:
-    0 2px 4px rgba(0,0,0,0.06),
-    0 16px 32px rgba(0,0,0,0.08),
-    0 40px 80px rgba(0,0,0,0.10);
-}
-.msty__media-frame img{
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 110%;
-  object-fit: cover;
-  display: block;
-  transform: translate3d(0, 0, 0) scale(1.06);
-  transition: transform 1200ms cubic-bezier(.2, .7, .2, 1);
-  will-change: transform;
-}
-.msty__media-tag{
-  position: absolute;
-  top: clamp(20px, 2vw, 28px);
-  left: clamp(20px, 2vw, 28px);
-  z-index: 2;
-  padding: 8px 12px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--msty-fg);
-  background: rgba(255,255,255,0.96);
-  backdrop-filter: blur(8px);
-  border-radius: 2px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-  opacity: 0;
-  transform: translateY(-6px);
-  transition: opacity 600ms ease 400ms, transform 600ms cubic-bezier(.2,.7,.2,1) 400ms;
-}
-
-/* ─── Copy column — vertically centered, anchored to image's visual height ─── */
-.msty__copy{
-  max-width: 480px;
-  align-self: center;
-  padding-block: clamp(20px, 3vw, 48px);
-}
-.msty__location-line{
-  margin: 0 0 clamp(20px, 2vw, 28px);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--msty-muted);
-  opacity: 0;
-  transform: translateY(12px);
-  transition: opacity 600ms ease, transform 600ms cubic-bezier(.2,.7,.2,1);
-}
-.msty__quote-mark{
-  display: block;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(88px, 9vw, 160px);
-  line-height: 0.7;
-  color: var(--teal);
-  margin-bottom: clamp(-20px, -1.5vw, -8px);
-  font-weight: 400;
-}
-.msty__headline{
-  margin: 0 0 clamp(20px, 2vw, 28px);
-  font-size: clamp(36px, 4.2vw, 56px);
-  line-height: 1.05;
-  letter-spacing: -0.025em;
-  font-weight: 700;
-  color: var(--msty-fg);
-}
-.msty__headline span{
-  display: block;
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 700ms cubic-bezier(.4, 0, .2, 1),
-              transform 800ms cubic-bezier(.2, .7, .2, 1);
-}
-.msty__accent{
-  font-style: italic;
-  color: var(--teal);
-}
-.msty__body{
-  margin: 0 0 clamp(28px, 3vw, 40px);
-  max-width: 46ch;
-  font-size: clamp(17px, 1.3vw, 20px);
-  line-height: 1.6;
-  color: var(--msty-fg);
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 700ms ease, transform 800ms cubic-bezier(.2,.7,.2,1);
-}
-.msty__attribution{
-  padding-top: clamp(20px, 2vw, 28px);
-  border-top: 1px solid var(--msty-rule);
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  opacity: 0;
-  transform: translateY(12px);
-  transition: opacity 600ms ease, transform 700ms cubic-bezier(.2,.7,.2,1);
-}
-.msty__attr-name{
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--msty-fg);
-}
-.msty__product{
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--teal);
-  text-decoration: none;
-  align-self: flex-start;
-  border-bottom: 1px solid currentColor;
-  padding-bottom: 1px;
-  transition: opacity 220ms ease;
-}
-.msty__product:hover{ opacity: 0.75; }
-
-/* ─── Entrance: applied when chapter enters viewport ─── */
-.msty__chapter.is-visible .msty__media-frame{ clip-path: inset(0 0 0 0 round 8px); }
-.msty__chapter.is-visible .msty__media-frame img{ transform: translate3d(0, 0, 0) scale(1); }
-.msty__chapter.is-visible .msty__media-tag{ opacity: 1; transform: translateY(0); }
-.msty__chapter.is-visible .msty__location-line{ opacity: 1; transform: translateY(0); }
-.msty__chapter.is-visible .msty__headline span{ opacity: 1; transform: translateY(0); }
-.msty__chapter.is-visible .msty__headline span:nth-child(1){ transition-delay: 200ms; }
-.msty__chapter.is-visible .msty__headline span:nth-child(2){ transition-delay: 280ms; }
-.msty__chapter.is-visible .msty__headline span:nth-child(3){ transition-delay: 360ms; }
-.msty__chapter.is-visible .msty__headline span:nth-child(4){ transition-delay: 440ms; }
-.msty__chapter.is-visible .msty__headline span:nth-child(5){ transition-delay: 520ms; }
-.msty__chapter.is-visible .msty__body{ opacity: 0.92; transform: translateY(0); transition-delay: 600ms; }
-.msty__chapter.is-visible .msty__attribution{ opacity: 1; transform: translateY(0); transition-delay: 720ms; }
-
-/* ─── Reduced motion ─── */
-@media (prefers-reduced-motion: reduce){
-  .msty__chapter *,
-  .msty__chapter .msty__headline span{
-    transition: none !important;
-    transform: none !important;
-    opacity: 1 !important;
-    clip-path: none !important;
-  }
-}
-
-/* ─── Tablet + mobile (≤1023px): stack media over copy ─── */
-@media (max-width: 1023px){
-  .msty__chapter-inner,
-  .msty__chapter--flip .msty__chapter-inner{
-    grid-template-columns: 1fr;
-    gap: clamp(32px, 6vw, 48px);
-    min-height: 0;
-  }
-  .msty__chapter--flip .msty__media{ order: 1; }
-  .msty__chapter--flip .msty__copy{ order: 2; }
-  .msty__media-frame{ aspect-ratio: 4 / 3; min-height: 0; clip-path: inset(4%); }
-  .msty__copy{ max-width: none; }
-  .msty__progress{ max-width: 180px; }
-  .msty__bar{ max-width: 56px; }
-}
-
-/* ============== Legacy .cine block removed — replaced by .msty above ============== */
-.cine, .cine *, .stories2, .stories2 *{ display: none !important; }
-/* LEGACY DEAD CSS BELOW — kept commented out as reference, not parsed
-.__legacy_dead_marker{
-  --cine-bg: #FAFAF8;
-  --cine-fg: #1A1A1A;
-  --cine-muted: rgba(0,0,0,0.55);
-  --cine-rule: rgba(0,0,0,0.10);
-  /* The chrome's vertical padding token — used by BOTH the chrome's
-     padding-top + margin-below-row AND the visual canvas's top offset,
-     so the image's top edge ALWAYS aligns with the progress line. */
-  --chrome-pad: clamp(10px, 1.2vw, 16px);
-  /* Total chrome height = padding-top + row(11) + margin-below-row + line(1) */
-  --chrome-h: calc(var(--chrome-pad) * 2 + 12px);
-  /* Outer frame padding — horizontal breathing only; top is 0 so the
-     chrome and image share the section's true top edge. */
-  --cine-pad-x: clamp(24px, 4vw, 80px);
-  --cine-pad-y: 0px;
-  background: var(--cine-bg);
-  color: var(--cine-fg);
-  position: relative;
-  /* No top padding — chrome and image start at the section's true top edge */
-  padding: 0 var(--cine-pad-x) clamp(32px, 3vw, 56px);
-  transition: background-color 600ms ease, color 600ms ease;
-}
-.cine__stage{
-  position: relative;
-  height: 300vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
-/* LEFT — sticky visual canvas */
-.cine__visual{
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  overflow: hidden;
-  /* Top breathing band stays light to match the chrome on the right column */
-  background: var(--cine-bg);
-}
-.cine__media{
-  position: absolute;
-  /* Top offset = chrome height, so image starts exactly at the progress line */
-  top: var(--chrome-h);
-  right: 0;
-  bottom: 0;
-  left: 0;
-  opacity: 0;
-  transition: opacity 450ms cubic-bezier(.4, 0, .2, 1);
-  will-change: opacity;
-  /* Letterbox bg matches the section/text column for a seamless one-color canvas */
-  background: var(--cine-bg);
-}
-.cine__media.is-active,
-.cine__media[data-media="1"]{ opacity: 1; }
-.cine__media img,
-.cine__media svg{
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  /* Anchor image to the top so its top edge aligns with the chrome line above */
-  object-position: center top;
-  display: block;
-}
-
-/* Story 1 — frost / atmosphere overlay */
-.cine__frost{
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.55), transparent 60%),
-    radial-gradient(ellipse at 70% 80%, rgba(220,235,255,0.45), transparent 65%),
-    linear-gradient(180deg, rgba(255,255,255,0.30), rgba(255,255,255,0.10));
-  mix-blend-mode: screen;
-  pointer-events: none;
-}
-
-/* Story 2 — CAD on white */
-.cine__media[data-media="2"]{
-  background: #FFFFFF;
-  color: var(--teal);
-}
-.cine__cad{
-  padding: clamp(48px, 8vw, 120px);
-  box-sizing: border-box;
-}
-.cine__cad-path{
-  stroke-dasharray: 2000;
-  stroke-dashoffset: 2000;
-}
-.cine__cad-dim{
-  stroke: rgba(0,0,0,0.4);
-  stroke-dasharray: 4 4;
-  opacity: 0;
-}
-.cine__cad-label{
-  font-family: ui-monospace, "SF Mono", Menlo, monospace;
-  font-size: 14px;
-  fill: rgba(0,0,0,0.6);
-  opacity: 0;
-}
-
-/* Story 3 — LED glow halo */
-.cine__glow{
-  position: absolute;
-  left: 32%; top: 38%;
-  width: 36%; aspect-ratio: 1;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,210,140,0.55), rgba(255,180,80,0.15) 40%, transparent 70%);
-  filter: blur(40px);
-  mix-blend-mode: screen;
-  opacity: 0;
-  pointer-events: none;
-}
-
-/* RIGHT — narrative sticks alongside the visual canvas.
-   Panels cross-fade in place; the 300vh stage drives the scroll length.
-   Chrome is absolutely positioned so the panels container can fill the full
-   100vh — letting the text block sit at true viewport center, aligned with
-   the image's vertical center. */
-.cine__narrative{
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  padding-inline: clamp(48px, 6vw, 120px);
-  overflow: hidden;
-}
-/* ─── Chrome — absolute overlay at top of sticky narrative ─── */
-.cine__chrome{
-  position: absolute;
-  top: 0;
-  left: clamp(48px, 6vw, 120px);
-  right: clamp(48px, 6vw, 120px);
-  z-index: 5;
-  padding-top: var(--chrome-pad);
-  padding-bottom: 0;
-}
-.cine__chrome-row{
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: clamp(24px, 4vw, 64px);
-  /* Symmetric to padding-top, both driven by --chrome-pad so they never drift */
-  margin-bottom: var(--chrome-pad);
-}
-
-/* Left — section label */
-.cine__chapter-label{
-  margin: 0;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--cine-fg);
-  line-height: 1;
-}
-
-/* Right — meta cluster */
-.cine__chapter-meta{
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  line-height: 1;
-  color: var(--cine-muted);
-}
-.cine__counter{
-  display: inline-flex;
-  align-items: baseline;
-  gap: 6px;
-  font-variant-numeric: tabular-nums;
-}
-/* Slot is the clip frame for the slide-up transition */
-.cine__counter-slot{
-  position: relative;
-  display: inline-block;
-  height: 11px;
-  overflow: hidden;
-  vertical-align: baseline;
-}
-.cine__counter-current{
-  display: inline-block;
-  color: var(--cine-fg);
-  font-weight: 700;
-  line-height: 1;
-  /* GSAP drives translateY on chapter change */
-  will-change: transform, opacity;
-}
-.cine__counter-sep{
-  color: var(--cine-muted);
-  opacity: 0.5;
-}
-.cine__counter-total{
-  color: var(--cine-muted);
-}
-.cine__rule{
-  width: 1px;
-  height: 12px;
-  background: var(--cine-rule);
-  align-self: center;
-}
-.cine__location-slot{
-  position: relative;
-  display: inline-block;
-  min-width: 110px;
-  height: 11px;
-  overflow: hidden;
-  vertical-align: baseline;
-}
-.cine__location{
-  display: inline-block;
-  color: var(--cine-fg);
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  line-height: 1;
-  white-space: nowrap;
-  will-change: transform, opacity;
-}
-
-/* ─── Unified progress line — single 1px rule across the chrome ─── */
-.cine__line{
-  position: relative;
-  height: 1px;
-  width: 100%;
-  background: color-mix(in srgb, var(--cine-fg) 12%, transparent);
-  overflow: hidden;
-}
-.cine__line-fill{
-  position: absolute;
-  inset: 0;
-  display: block;
-  width: 0%;
-  background: var(--teal);
-  /* Light smoothing — independent of ScrollTrigger scrub */
-  transition: width 100ms linear;
-}
-.cine.is-night .cine__line{
-  background: color-mix(in srgb, #F4F4F2 18%, transparent);
-}
-
-/* Panels container — fills the full sticky-narrative height (100vh) so panel
-   content centers at the true viewport center, aligned with the image. */
-.cine__panels{
-  position: relative;
-  height: 100%;
-}
-.cine__panel{
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-block: clamp(32px, 3.5vw, 56px);
-  opacity: 0;
-  transition: opacity 450ms cubic-bezier(.4, 0, .2, 1);
-  pointer-events: none;
-}
-/* Panel 1 visible by default so first paint isn't blank */
-.cine__panel[data-panel="1"]{ opacity: 1; pointer-events: auto; }
-
-/* Internal rhythm — location → headline → body → attribution sit as one tight cluster */
-.cine__location{ margin-bottom: clamp(14px, 1.2vw, 18px); }
-.cine__body    { margin-top: clamp(24px, 2vw, 32px); }
-.cine__panel > .cine__attribution{ margin-top: clamp(28px, 2.6vw, 40px); }
-
-.cine__location{
-  margin: 0;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--cine-muted);
-}
-.cine__headline{
-  margin: 0;
-  font-size: clamp(40px, 4.4vw, 64px);
-  line-height: 1.05;
-  letter-spacing: -0.025em;
-  font-weight: 700;
-  color: var(--cine-fg);
-}
-.cine__headline em{
-  font-style: italic;
-  font-weight: 700;
-  color: var(--teal);
-}
-.cine__body{
-  margin: 0;
-  max-width: 48ch;
-  font-size: clamp(18px, 1.4vw, 22px);
-  line-height: 1.6;
-  letter-spacing: -0.005em;
-  color: var(--cine-fg);
-  opacity: 0.85;
-}
-.cine__attribution{
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding-top: 24px;
-  border-top: 1px solid var(--cine-rule);
-}
-.cine__attribution strong{
-  font-size: 15px;
-  font-weight: 700;
-}
-.cine__product{
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--teal);
-  text-decoration: none;
-  border-bottom: 1px solid currentColor;
-  align-self: flex-start;
-  padding-bottom: 1px;
-}
-
-/* Dark mode for story 3 — matches the closing CTA's --teal-dark for full-page brand consistency */
-.cine.is-night{
-  --cine-bg: var(--teal-dark);
-  --cine-fg: #F4F4F2;
-  --cine-muted: rgba(244,244,242,0.6);
-  --cine-rule: rgba(244,244,242,0.14);
-}
-
-/* Reduced motion — collapse the cinematic to a static stack */
-@media (prefers-reduced-motion: reduce){
-  .cine__stage{ height: auto; display: block; }
-  .cine__visual{ position: relative; height: 60vh; }
-  .cine__media{ position: relative; opacity: 1; }
-  .cine__media + .cine__media{ margin-top: 24px; }
-  .cine__panel{ opacity: 1; transform: none; min-height: auto; padding-block: 48px; }
-  .cine__frost,
-  .cine__glow{ display: none; }
-}
-
-/* MOBILE ≤960px — horizontal scroll-snap, one card per viewport */
-@media (max-width: 960px){
-  .cine__stage{
-    height: auto;
-    grid-template-columns: none;
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  .cine__stage::-webkit-scrollbar{ display: none; }
-
-  .cine__visual{ display: none; } /* media embedded per-panel on mobile */
-  .cine__narrative{ padding: 0; flex: 0 0 100%; min-width: 100%; }
-  .cine__chrome{
-    position: absolute; top: 0; left: 0; right: 0;
-    background: linear-gradient(to bottom, rgba(255,255,255,0.95), transparent);
-    padding: 20px clamp(24px, 6vw, 40px);
-    z-index: 3;
-  }
-  .cine__panel{
-    flex: 0 0 100vw;
-    min-width: 100vw;
-    min-height: 100svh;
-    padding: clamp(72px, 12vw, 96px) clamp(24px, 6vw, 40px) clamp(40px, 8vw, 64px);
-    scroll-snap-align: start;
-    opacity: 1;
-    transform: none;
-    background: var(--cine-bg);
-    background-size: cover;
-    background-position: center;
-    color: var(--cine-fg);
-  }
-  .cine__panel[data-panel="1"]{
-    background-image:
-      linear-gradient(180deg, rgba(250,250,248,0.92) 0%, rgba(250,250,248,0.78) 55%, rgba(250,250,248,0.96) 100%),
-      url('images/T%C3%BCrklingel.jpg');
-  }
-  .cine__panel[data-panel="2"]{
-    background-image: linear-gradient(180deg, #ffffff, #f4f4f2);
-  }
-  .cine__panel[data-panel="3"]{
-    background-color: var(--teal-dark);
-    color: #F4F4F2;
-    background-image:
-      linear-gradient(180deg, rgba(21,23,26,0.55) 0%, rgba(21,23,26,0.82) 60%, rgba(21,23,26,0.95) 100%),
-      url('images/Hausnummer.jpg');
-  }
-  .cine__panel[data-panel="3"] .cine__headline,
-  .cine__panel[data-panel="3"] .cine__body,
-  .cine__panel[data-panel="3"] .cine__attribution strong{ color: #F4F4F2; }
-  .cine__panel[data-panel="3"] .cine__attribution{ border-top-color: rgba(244,244,242,0.18); }
-  .cine__panel[data-panel="3"] .cine__location{ color: rgba(244,244,242,0.65); }
-}
-END OF LEGACY DEAD CSS */
 
 /* ============== TRUST BAR — timeline of awards & proof ============== */
 .trustbar{
@@ -3440,11 +2503,17 @@ END OF LEGACY DEAD CSS */
 }
 .news__title{
   margin: 0 0 clamp(16px, 1.6vw, 22px);
-  font-size: clamp(28px, 3.2vw, 42px);
+  font-size: var(--text-display);
   font-weight: 700;
   line-height: 1.15;
   letter-spacing: -0.02em;
   color: var(--schwarz);
+}
+@media (min-width: 768px) and (max-width: 1023px){
+  .craft-headline, .news__title{ font-size: 2.25rem; }
+}
+@media (max-width: 767px){
+  .news__title{ font-size: 2rem; }
 }
 .news__title i{
   font-style: normal;
@@ -3456,7 +2525,7 @@ END OF LEGACY DEAD CSS */
   margin-bottom: clamp(32px, 3.5vw, 48px);
   margin-left: auto;
   margin-right: auto;
-  font-size: clamp(15px, 1.15vw, 17px);
+  font-size: clamp(14px, 1.15vw, 16px);
   line-height: 1.6;
   color: #4a4a4a;
   /* No max-width — inherits the .news__inner 720px so it aligns
