@@ -384,8 +384,6 @@ html{ overflow-x: clip; }
 }
 .prod .about-hero__copy-col{ padding-inline: 0; }
 .prod .about-hero__photo-col{ padding-right: 0; border: 0; }
-/* CTAs size to their labels (the "Fertigungsstatus" secondary is longer than the About-us labels) */
-.prod .about-hero__ctas .btn{ flex: 0 1 auto; }
 
 /* journey chrome: solid, exactly the gray of its section */
 .prod-craft .msty__chrome{ background: var(--paper-white); }
