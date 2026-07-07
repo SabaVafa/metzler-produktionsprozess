@@ -110,6 +110,30 @@
    page's shorter copy would otherwise shrink-wrap narrower (~503px) and read as
    inconsistent. Stays fluid below the cap on tablet/mobile. */
 .prod .about-hero__copy{ width: min(33.75rem, 100%); }
+/* Even hero rhythm on desktop: the shared style.css only equalises the
+   headline→chips and chips→sub gaps at ≥1536px; below that the base rules give
+   an uneven 32px / 19px pair. Apply the same balanced spacing across the whole
+   desktop split so the two gaps read consistent — and it keeps the copy block
+   tall enough that the centered block still lines up with the breadcrumb like
+   About us. (Stacked layout ≤1279px keeps the style.css flow spacing.) */
+/* Hero rhythm on desktop. About-us applies its balanced hero spacing
+   (gap:0, sub margin, zeroed CTA top margin) across the desktop split, but
+   this page's style.css only switches it on at ≥1536px — below that the base
+   rules leave an uneven pair of gaps AND a stray 40px above the CTAs. Apply
+   the About-us recipe across the whole split so the block height (and the
+   breadcrumb alignment) matches — with one refinement: the headline→chips and
+   chips→subtitle gaps are set to read EQUAL. Equal margins don't look equal
+   here (the h1's trailing leading sits below its trimmed box, shrinking the
+   gap under it; the sub's leading sits above its text, growing the gap over
+   it), so the headline gets a little more and the chips a little less. Their
+   sum (60px) equals About-us's (30+30) so the block height is unchanged. */
+@media (min-width: 1280px){
+  .prod .about-hero__copy{ gap: 0; }
+  .prod .about-hero__copy h1{ margin: 0 0 35px; }
+  .prod .about-hero__copy .about-hero__chips{ margin: 0 0 25px; }
+  .prod .about-hero__copy .about-hero__sub{ margin: 0 0 44px; }
+  .prod .about-hero__ctas{ margin-top: 0; }
+}
 /* hero: inset the image from the right edge to match the text's left padding */
 .prod .about-hero__photo-col{ padding-right: clamp(1.5rem, 5vw, 7.25rem); }
 
