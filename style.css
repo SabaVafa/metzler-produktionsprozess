@@ -28,7 +28,7 @@ html, body{ overflow-x: clip; }
   --about-header-gap: clamp(32px, 4vw, 48px);  /* header → content */
   /* Background palette — duo-tone rhythm.
      White = brand-showcase sections; soft = human-voice sections. */
-  --about-bg-white: #FFFFFF;
+  --about-bg-white: #fff;
   --about-bg-soft:  #F5F6FA;  /* matches homepage --paper-white — cool, engineered */
 }
 /* ─────────────────────────────────────────────────────────

@@ -5,28 +5,7 @@
 (function(){
   'use strict';
 
-  /* ── FAQ accordion ── */
-  var faq = document.getElementById('prodFaq');
-  if(faq){
-    var items = Array.prototype.slice.call(faq.querySelectorAll('.prod-faq__item'));
-    function setOpen(item, open){
-      item.classList.toggle('open', open);
-      var a = item.querySelector('.prod-faq__a');
-      a.style.maxHeight = open ? (a.scrollHeight + 'px') : '0px';
-    }
-    items.forEach(function(item){
-      setOpen(item, item.classList.contains('open'));
-      item.querySelector('.prod-faq__q').addEventListener('click', function(){
-        var willOpen = !item.classList.contains('open');
-        items.forEach(function(o){ if(o !== item) setOpen(o, false); });
-        setOpen(item, willOpen);
-      });
-    });
-    window.addEventListener('resize', function(){
-      var open = faq.querySelector('.prod-faq__item.open');
-      if(open){ var a = open.querySelector('.prod-faq__a'); a.style.maxHeight = a.scrollHeight + 'px'; }
-    });
-  }
+  /* (The FAQ uses native <details>/<summary> — no script needed.) */
 
   /* ── Film player: independent, interactive control bar ── */
   var film = document.getElementById('prodFilm');
