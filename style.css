@@ -389,19 +389,6 @@ main.about .section-title i{
   margin-bottom: var(--sp-8);
 }
 
-/* Secondary CTA on the hero — transparent black tint instead of the
-   homepage's fully-transparent default. Adds contrast against the photo
-   while keeping the button visually "secondary". */
-.about-hero .hero-banner__cta--secondary,
-.about-hero-v2 .hero-banner__cta--secondary{
-  background: rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(2px);
-}
-.about-hero .hero-banner__cta--secondary:hover,
-.about-hero-v2 .hero-banner__cta--secondary:hover{
-  background: rgba(0, 0, 0, 0.50);
-}
-
 /* Visible focus ring for keyboard users — scoped to About so we don't
    touch the homepage's button system. */
 .about .btn:focus-visible{

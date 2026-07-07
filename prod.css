@@ -316,6 +316,12 @@
 /* hero width now handled by .container (matches About us proportions) */
 .prod .about-hero__copy-col, .prod .about-hero__photo-col{ background: var(--schwarz); }
 .prod .about-hero h1 span{ display:block; }
+/* Hero copy block: pin to the full 540px measure so the text block and its
+   equal-width CTAs match the About-us hero exactly. The shared style.css only
+   sets a max-width; the About-us copy is long enough to reach it, but this
+   page's shorter copy would otherwise shrink-wrap narrower (~503px) and read as
+   inconsistent. Stays fluid below the cap on tablet/mobile. */
+.prod .about-hero__copy{ width: min(540px, 100%); }
 /* hero: inset the image from the right edge to match the text's left padding */
 .prod .about-hero__photo-col{ padding-right: clamp(1.5rem, 5vw, 7.25rem); }
 
