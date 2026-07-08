@@ -988,6 +988,10 @@ main.about .section-title i{
 }
 /* Eyebrow line-height must beat the global `.about p{ line-height: var(--lh-body) }`. */
 .about .eyebrow, .about .craft-eyebrow{ line-height: 1.4; }
+/* Uniform eyebrow→title gap = 20px everywhere (sections, chapters, hero kicker).
+   Specificity 0,2,0 beats the global `.about p{ margin: 0 0 1em }` (which was
+   collapsing the 12px-font eyebrows to a 1em/12px gap). */
+.about .eyebrow, .about .craft-eyebrow, .about .about-hero__kicker{ margin-bottom: var(--sp-5); }
 .about .section-sub{ margin-top: var(--sp-5); }
 
 /* Story-section CTA — text link, consistent with the craft/stories links
@@ -1701,7 +1705,7 @@ main.about .about-editorial__tier--bottom .section-title i{
   padding-block: clamp(20px, 3vw, 48px);
 }
 .craft-eyebrow{
-  margin: 0 0 var(--sp-3);   /* 12px — chapters use the tighter eyebrow gap */
+  margin: 0 0 var(--sp-5);   /* 20px — uniform eyebrow→title gap */
   font-size: var(--text-caption);
   font-weight: 700;
   line-height: 1.4;
