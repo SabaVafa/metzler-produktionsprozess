@@ -46,6 +46,7 @@
   --graphite-200: #E6E6E8;
   --graphite-100: #F0F0F0;
   --paper-white: #F5F6FA;
+  --text-muted: #6a6a6a;   /* muted label/caption grey (eyebrows) */
 
   /* Type scale */
   --text-display: 2.875rem;     /* 46 */
