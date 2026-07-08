@@ -30,6 +30,7 @@ html, body{ overflow-x: clip; }
      White = brand-showcase sections; soft = human-voice sections. */
   --about-bg-white: #fff;
   --about-bg-soft:  #F5F6FA;  /* matches homepage --paper-white — cool, engineered */
+  --text-muted: #6a6a6a;      /* muted caption/metadata ink (passes AA on white) */
 }
 /* ─────────────────────────────────────────────────────────
    BACKGROUND RHYTHM — "statement → proof" alternation.
@@ -110,7 +111,7 @@ main.about .section-title i{
 
 /* Centered italic hint line under a section */
 .about-hint{
-  color: #6a6a6a;
+  color: var(--text-muted);
   font-size: var(--text-body-sm);
   text-align: center;
   margin-top: var(--sp-6);
@@ -689,7 +690,7 @@ main.about .section-title i{
   margin-top: clamp(28px, 2.4vw, 40px);
   text-align: left;
   font-size: var(--text-body-sm);
-  color: #6a6a6a;
+  color: var(--text-muted);
   letter-spacing: 0.02em;
 }
 .about-topshop__copy .section-sub{ margin-bottom: clamp(var(--sp-5), 2.4vw, var(--sp-6)); }
@@ -769,7 +770,7 @@ main.about .section-title i{
    flush against the image. */
 .about .about-caption{
   font-size: var(--text-caption);
-  color: #6a6a6a;
+  color: var(--text-muted);
   margin: var(--sp-3) 0 0;
   line-height: 1.5;
 }
@@ -1025,7 +1026,7 @@ main.about .section-title i{
   margin-bottom: var(--sp-1);
 }
 .about-sig__name{ font-weight: 700; color: var(--schwarz); font-size: var(--text-h4); }
-.about-sig__role{ color: #6a6a6a; font-size: var(--text-body-sm); }
+.about-sig__role{ color: var(--text-muted); font-size: var(--text-body-sm); }
 
 /* ============== SECTION 3 — PILLARS ============== */
 .about-pillars__grid{
@@ -1247,7 +1248,7 @@ main.about .section-title i{
 .about-founder__role{
   margin: 4px 0 0;
   font-size: var(--text-body-sm);
-  color: #6a6a6a;
+  color: var(--text-muted);
   letter-spacing: 0.02em;
 }
 @media (max-width: 1023px){
@@ -1894,7 +1895,7 @@ main.about .about-editorial__tier--bottom .section-title i{
 }
 .about-place__stats span{
   font-size: var(--text-body-sm);
-  color: #6a6a6a;
+  color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -2341,7 +2342,7 @@ main.about .about-editorial__tier--bottom .section-title i{
   font-weight: 500;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: #6a6a6a;
+  color: var(--text-muted);
   line-height: 1.4;
   transition: opacity 320ms ease;
   /* Keep subtitle on one line on laptop+; allow wrap on mobile */
@@ -2593,7 +2594,7 @@ main.about .about-editorial__tier--bottom .section-title i{
   margin: 0;
   font-size: 12px;
   font-weight: 500;
-  color: #6a6a6a;
+  color: var(--text-muted);
   letter-spacing: 0.02em;
 }
 .news__note svg{
@@ -2696,7 +2697,7 @@ main.about .about-editorial__tier--bottom .section-title i{
   font-weight: 600 !important;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #6a6a6a !important;
+  color: var(--text-muted) !important;
   text-align: center !important;
 }
 /* ─── Contact strip — light band between dark CTA and dark footer ─── */
@@ -2741,7 +2742,7 @@ main.about .about-editorial__tier--bottom .section-title i{
   font-weight: 500;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: #6a6a6a;
+  color: var(--text-muted);
 }
 .contact-strip__trust li{
   position: relative;
