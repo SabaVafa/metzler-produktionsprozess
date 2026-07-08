@@ -275,7 +275,7 @@ main.about .section-title i{
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.72);
 }
 .about-hero__copy h1{
   margin: 0 0 calc(var(--sp-6) - 5px);
