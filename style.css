@@ -2532,9 +2532,9 @@ main.about .about-editorial__tier--bottom .section-title i{
   margin-bottom: clamp(32px, 3.5vw, 48px);
   margin-left: auto;
   margin-right: auto;
-  font-size: clamp(14px, 1.15vw, 16px);
+  font-size: var(--text-h4);
   line-height: 1.6;
-  color: #4a4a4a;
+  color: var(--schwarz);
   /* No max-width — inherits the .news__inner 720px so it aligns
      proportionally with the title above */
   text-align: center !important;
@@ -2687,7 +2687,7 @@ main.about .about-editorial__tier--bottom .section-title i{
   font-weight: 700;
   color: inherit;
 }
-.about-closing p{ color: #4a4a4a; }
+.about-closing p{ color: var(--schwarz); }
 .about-closing__hours{
   margin: clamp(16px, 1.7vw, 24px) auto 0 !important;
   max-width: 600px;
