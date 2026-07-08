@@ -465,6 +465,7 @@ main.about .section-title i{
   .about-hero__primary{ row-gap: 0; }
   .about-hero__copy{ padding-block: 40px; }
   .about-hero__photo{ object-position: center 35%; }
+  .about-hero h1{ font-size: 2rem; }   /* 32px on phones — matches About us */
   /* Drop the desktop hard line break — let the sub wrap naturally on phones */
   .about-hero__sub br{ display: none; }
   /* CTAs stack full-width — two German labels are too long to sit
