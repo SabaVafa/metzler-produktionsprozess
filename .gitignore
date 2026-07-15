@@ -4,6 +4,10 @@ Thumbs.db
 *.swp
 .vscode/
 .idea/
+.claude/
+
+# internal (not part of the delivery)
+metzler-content-briefing.md
 
 # Local servers / logs
 *.log
