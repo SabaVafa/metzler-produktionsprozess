@@ -1718,7 +1718,7 @@ main.about .about-editorial__tier--bottom .section-title i{
 .craft-headline{
   margin: 0 0 clamp(20px, 2vw, 28px);
   font-size: var(--text-display);
-  line-height: 1.05;
+  line-height: var(--lh-display);   /* 1.15 — was 1.05, too tight/stacked for multi-line */
   letter-spacing: -0.025em;
   font-weight: 700;
   color: var(--craft-fg);
