@@ -136,6 +136,10 @@
 }
 /* hero: inset the image from the right edge to match the text's left padding */
 .prod .about-hero__photo-col{ padding-right: clamp(1.5rem, 5vw, 7.25rem); }
+/* Single hero CTA sizes to its content (the About-us pair uses flex:1 1 0 to
+   fill the row; a lone button would otherwise stretch full-width like a bar).
+   On mobile the stacked full-width treatment still applies. */
+.prod .about-hero__ctas .btn:only-child{ flex: 0 0 auto; }
 
 /* ════ About-us alternating section backgrounds (white ↔ gray) ════ */
 .prod .prod-bg-soft{ background: var(--paper-white); }
