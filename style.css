@@ -1735,6 +1735,9 @@ main.about .about-editorial__tier--bottom .section-title i{
 @media (max-width: 1023px){
   .craft-headline span{ display: inline; }
   .craft-headline span:first-child::after{ content: " – "; }
+  /* single-phrase headlines split only for the desktop 2-line layout:
+     join with a plain space (not the editorial dash) when they collapse inline */
+  .craft-headline--plain span:first-child::after{ content: " "; }
 }
 @media (max-width: 767px){
   .craft-headline{ font-size: 2rem; }
