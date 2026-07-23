@@ -9,6 +9,9 @@ Thumbs.db
 # internal (not part of the delivery)
 metzler-content-briefing.md
 
+# dev-facing README — kept locally, hidden from the public repo
+README.md
+
 # Local servers / logs
 *.log
 
